@@ -124,15 +124,26 @@ kotlin {
 }
 
 fun registerDownloadTask(
-    taskName: String, srcUrl: String, destPath: String, project: Project
+    taskName: String, srcUrl: String, destPath: String, project: Project, version: String? = null
 ) {
     project.tasks.register(taskName) {
         val destFile = File(destPath)
+        val versionFile = File("$destPath.version")
 
         doLast {
-            if (!destFile.exists() || isFileUpdated(srcUrl, destFile)) {
+            var forceDownload = false
+            if (version != null) {
+                if (!versionFile.exists() || versionFile.readText().trim() != version) {
+                    forceDownload = true
+                }
+            }
+
+            if (!destFile.exists() || forceDownload || isFileUpdated(srcUrl, destFile)) {
                 println(" - Downloading $srcUrl to ${destFile.absolutePath}")
                 downloadFile(srcUrl, destFile)
+                if (version != null) {
+                    versionFile.writeText(version)
+                }
                 println(" - Download completed.")
             } else {
                 println(" - File is up-to-date, skipping download.")
@@ -159,14 +170,16 @@ registerDownloadTask(
     taskName = "downloadKpimg",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/$kernelPatchVersion/kpimg-android",
     destPath = "${project.projectDir}/src/main/assets/kpimg",
-    project = project
+    project = project,
+    version = kernelPatchVersion
 )
 
 registerDownloadTask(
     taskName = "downloadKptools",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/$kernelPatchVersion/kptools-android",
     destPath = "${project.projectDir}/libs/arm64-v8a/libkptools.so",
-    project = project
+    project = project,
+    version = kernelPatchVersion
 )
 
 // Compat kp version less than 0.10.7
@@ -175,7 +188,8 @@ registerDownloadTask(
     taskName = "downloadCompatKpatch",
     srcUrl = "https://github.com/bmax121/KernelPatch/releases/download/0.10.7/kpatch-android",
     destPath = "${project.projectDir}/libs/arm64-v8a/libkpatch.so",
-    project = project
+    project = project,
+    version = "0.10.7"
 )
 
 tasks.register<Copy>("mergeScripts") {
