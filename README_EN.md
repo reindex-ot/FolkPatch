@@ -13,13 +13,18 @@
 
 **FolkPatch** is an extended non-parallel branch based on [APatch](https://github.com/bmax121/APatch), only through optimizing the interface design and extending the features, without introducing new core functions.
 
-## Key Features
+# Main Features
 
-- A kernel-based root solution for Android devices
-- APM: Support for modules similar to Magisk
-- KPM: Support for modules that allow you to inject any code into the kernel (Provides kernel function `inline-hook` and `syscall-table-hook`)
-- Removed auto-update functionality for a more stable user experience
-- Better custom system support, including custom wallpapers
+- Kernel-based Android device rooting solution
+- APM: Supports a Magisk-like module system, with batch flashing for greater efficiency
+- KPM: Supports kernel-injectable modules (providing kernel functions `inline-hook` and `syscall-table-hook`)
+- Removed the auto-update feature for a more stable user experience
+- Enhanced system customization with support for custom wallpapers
+- Fully automated KPM loading mechanism, no need to embed into Boot
+- Full module backup, allowing you to enjoy Root access with peace of mind
+- Multiple featured language styles for on-demand switching
+- Global module exclusion for faster operation
+- Online module download functionality
 
 ## Download & Install
 
