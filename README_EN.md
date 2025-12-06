@@ -49,15 +49,10 @@ This project is based on the following open source projects:
 
 FolkPatch is licensed under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
 
-## Original Project Community
+# FolkPatch Discussion & Communication
+- Telegram Channel: [@FolkPatch](https://t.me/FolkPatch)
 
-The following are the official community and communication channels for the original APatch project:
+# APatch Community
+[@APatch](https://t.me/apatch_discuss)
 
-### Updates
-
-- Telegram Channel: [@APatchUpdates](https://t.me/APatchChannel)
-
-### Discussions
-
-- Telegram Group: [@APatchDiscussions(EN/CN)](https://t.me/Apatch_discuss)
-- Telegram Group: [中文](https://t.me/APatch_CN_Group)
+For questions and suggestions regarding FolkPatch, please raise them in the [@FolkPatch](https://t.me/FolkPatch) channel or QQ Group, and avoid causing inconvenience to the official channel.

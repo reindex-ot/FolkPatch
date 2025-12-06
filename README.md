@@ -49,15 +49,13 @@
 
 FolkPatch 遵循 GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html) 许可证开源。
 
-## 原始项目社区
+## FolkPatch讨论交流
 
-以下为原始APatch项目的官方社区和交流渠道：
+- Telegram 频道: [@FolkPatch](https://t.me/FolkPatch)
+- QQ群: 1074588103
 
-### 更新信息
+## APatch社区
 
-- Telegram 频道: [@APatchUpdates](https://t.me/APatchChannel)
+[@APatch](https://t.me/apatch_discuss)
 
-### 讨论交流
-
-- Telegram 群组: [@APatchDiscussions(EN/CN)](https://t.me/Apatch_discuss)
-- Telegram 群组: [中文](https://t.me/APatch_CN_Group)
+FolkPatch 的问题和建议请在 [@FolkPatch](https://t.me/FolkPatch) 频道或 QQ群 中提出,不要给官方频道造成困扰。
