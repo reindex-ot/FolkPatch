@@ -46,6 +46,7 @@ object ThemeManager {
         val homeLayoutStyle: String,
         val nightModeEnabled: Boolean,
         val nightModeFollowSys: Boolean,
+        val useSystemDynamicColor: Boolean,
         // Grid Working Card Background
         val isGridWorkingCardBackgroundEnabled: Boolean = false,
         val gridWorkingCardBackgroundOpacity: Float = 1.0f,
@@ -80,6 +81,7 @@ object ThemeManager {
                     homeLayoutStyle = prefs.getString("home_layout_style", "default") ?: "default",
                     nightModeEnabled = prefs.getBoolean("night_mode_enabled", false),
                     nightModeFollowSys = prefs.getBoolean("night_mode_follow_sys", true),
+                    useSystemDynamicColor = prefs.getBoolean("use_system_color_theme", true),
                     isGridWorkingCardBackgroundEnabled = BackgroundConfig.isGridWorkingCardBackgroundEnabled,
                     gridWorkingCardBackgroundOpacity = BackgroundConfig.gridWorkingCardBackgroundOpacity,
                     gridWorkingCardBackgroundDim = BackgroundConfig.gridWorkingCardBackgroundDim,
@@ -96,6 +98,7 @@ object ThemeManager {
                     put("homeLayoutStyle", config.homeLayoutStyle)
                     put("nightModeEnabled", config.nightModeEnabled)
                     put("nightModeFollowSys", config.nightModeFollowSys)
+                    put("useSystemDynamicColor", config.useSystemDynamicColor)
                     
                     // Grid Working Card Background
                     put("isGridWorkingCardBackgroundEnabled", config.isGridWorkingCardBackgroundEnabled)
@@ -289,6 +292,7 @@ object ThemeManager {
                 val homeLayoutStyle = json.optString("homeLayoutStyle", "default")
                 val nightModeEnabled = json.optBoolean("nightModeEnabled", false)
                 val nightModeFollowSys = json.optBoolean("nightModeFollowSys", true)
+                val useSystemDynamicColor = json.optBoolean("useSystemDynamicColor", true)
                 
                 // Grid Working Card Background
                 val isGridWorkingCardBackgroundEnabled = json.optBoolean("isGridWorkingCardBackgroundEnabled", false)
@@ -433,6 +437,7 @@ object ThemeManager {
                     .putString("home_layout_style", homeLayoutStyle)
                     .putBoolean("night_mode_enabled", nightModeEnabled)
                     .putBoolean("night_mode_follow_sys", nightModeFollowSys)
+                    .putBoolean("use_system_color_theme", useSystemDynamicColor)
                     .apply()
                 
                 // 6. Refresh Theme
