@@ -135,7 +135,7 @@ class MainActivity : AppCompatActivity() {
             val promptInfo = androidx.biometric.BiometricPrompt.PromptInfo.Builder()
                 .setTitle(getString(R.string.action_biometric))
                 .setSubtitle(getString(R.string.msg_biometric))
-                .setNegativeButtonText(getString(android.R.string.cancel))
+                .setAllowedAuthenticators(androidx.biometric.BiometricManager.Authenticators.BIOMETRIC_STRONG or androidx.biometric.BiometricManager.Authenticators.DEVICE_CREDENTIAL)
                 .build()
             biometricPrompt.authenticate(promptInfo)
         } else {
