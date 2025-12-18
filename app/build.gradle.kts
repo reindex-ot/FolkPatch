@@ -48,10 +48,10 @@ android {
 
     signingConfigs {
         create("release") {
-            storeFile = file(keystoreProperties["KEYSTORE_FILE"] as String)
-            storePassword = keystoreProperties["KEYSTORE_PASSWORD"] as String
-            keyAlias = keystoreProperties["KEY_ALIAS"] as String
-            keyPassword = keystoreProperties["KEY_PASSWORD"] as String
+            storeFile = file(keystoreProperties.getProperty("KEYSTORE_FILE") ?: "debug.keystore")
+            storePassword = keystoreProperties.getProperty("KEYSTORE_PASSWORD") ?: "android"
+            keyAlias = keystoreProperties.getProperty("KEY_ALIAS") ?: "androiddebugkey"
+            keyPassword = keystoreProperties.getProperty("KEY_PASSWORD") ?: "android"
         }
     }
 
