@@ -3,6 +3,7 @@ package me.bmax.apatch.util
 import android.content.ComponentName
 import android.content.Context
 import android.content.pm.PackageManager
+import me.bmax.apatch.APApplication
 
 enum class LauncherIconVariant(val aliasName: String) {
     DEFAULT(".ui.MainActivityAliasDefault"),
@@ -29,8 +30,7 @@ object LauncherIconUtils {
 
     fun applyVariant(context: Context, variant: LauncherIconVariant) {
         val pm = context.packageManager
-        val basePackage = LauncherIconUtils::class.java.`package`?.name?.substringBeforeLast(".")
-            ?: context.packageName
+        val basePackage = APApplication::class.java.`package`?.name ?: "me.bmax.apatch"
         aliases.forEach { v ->
             val cn = ComponentName(context.packageName, basePackage + v.aliasName)
             val state = if (v == variant) PackageManager.COMPONENT_ENABLED_STATE_ENABLED else PackageManager.COMPONENT_ENABLED_STATE_DISABLED
