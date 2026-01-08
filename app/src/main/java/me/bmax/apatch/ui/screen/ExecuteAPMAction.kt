@@ -21,6 +21,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.runtime.setValue
@@ -51,8 +52,8 @@ import java.util.Locale
 @Destination<RootGraph>
 fun ExecuteAPMActionScreen(navigator: DestinationsNavigator, moduleId: String) {
     var text by rememberSaveable { mutableStateOf("") }
-    var tempText: String
-    val logContent = rememberSaveable { StringBuilder() }
+    val displayBuffer = remember { StringBuffer() }
+    val fullLogBuffer = remember { StringBuffer() }
     val snackBarHost = LocalSnackbarHost.current
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
@@ -62,25 +63,44 @@ fun ExecuteAPMActionScreen(navigator: DestinationsNavigator, moduleId: String) {
         if (text.isNotEmpty()) {
             return@LaunchedEffect
         }
+
+        val updaterJob = launch {
+            while (true) {
+                kotlinx.coroutines.delay(100)
+                val newText = displayBuffer.toString()
+                if (text.length != newText.length) {
+                    text = newText
+                }
+            }
+        }
+
         withContext(Dispatchers.IO) {
             runAPModuleAction(
                 moduleId,
                 onStdout = {
-                    tempText = "$it\n"
+                    val tempText = "$it\n"
                     if (tempText.startsWith("[H[J")) { // clear command
-                        text = tempText.substring(6)
+                        displayBuffer.setLength(0)
+                        displayBuffer.append(tempText.substring(6))
                     } else {
-                        text += tempText
+                        displayBuffer.append(tempText)
                     }
-                    logContent.append(it).append("\n")
+                    fullLogBuffer.append(it).append("\n")
                 },
                 onStderr = {
-                    logContent.append(it).append("\n")
+                    fullLogBuffer.append(it).append("\n")
                 }
             ).let {
                 actionResult = it
             }
         }
+
+        updaterJob.cancel()
+        val finalText = displayBuffer.toString()
+        if (text.length != finalText.length) {
+            text = finalText
+        }
+
         if (actionResult) {
             if (!APApplication.sharedPreferences.getBoolean("apm_action_stay_on_page", true)) {
                 navigator.popBackStack()
@@ -102,7 +122,7 @@ fun ExecuteAPMActionScreen(navigator: DestinationsNavigator, moduleId: String) {
                             Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                             "APatch_apm_action_log_${date}.log"
                         )
-                        file.writeText(logContent.toString())
+                        file.writeText(fullLogBuffer.toString())
                         snackBarHost.showSnackbar("Log saved to ${file.absolutePath}")
                     }
                 }

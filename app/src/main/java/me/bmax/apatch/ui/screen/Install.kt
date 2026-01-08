@@ -66,8 +66,8 @@ enum class MODULE_TYPE {
 @Destination<RootGraph>
 fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE) {
     var text by remember { mutableStateOf("") }
-    var tempText: String
-    val logContent = remember { StringBuilder() }
+    val displayBuffer = remember { StringBuffer() }
+    val fullLogBuffer = remember { StringBuffer() }
     var showFloatAction by rememberSaveable { mutableStateOf(false) }
 
     val snackBarHost = LocalSnackbarHost.current
@@ -87,27 +87,45 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
         if (text.isNotEmpty()) {
             return@LaunchedEffect
         }
+
+        val updaterJob = launch {
+            while (true) {
+                kotlinx.coroutines.delay(100)
+                val newText = displayBuffer.toString()
+                if (text.length != newText.length) {
+                    text = newText
+                }
+            }
+        }
+
         withContext(Dispatchers.IO) {
             installModule(uri, type, onFinish = { success ->
+                updaterJob.cancel()
+                val finalText = displayBuffer.toString()
+                if (text.length != finalText.length) {
+                    text = finalText
+                }
                 if (success) {
                     showFloatAction = true
                 }
             }, onStdout = {
-                tempText = "$it\n"
+                val tempText = "$it\n"
                 if (tempText.startsWith("[H[J")) { // clear command
-                    text = tempText.substring(6)
+                    displayBuffer.setLength(0)
+                    displayBuffer.append(tempText.substring(6))
                 } else {
-                    text += tempText
+                    displayBuffer.append(tempText)
                 }
-                logContent.append(it).append("\n")
+                fullLogBuffer.append(it).append("\n")
             }, onStderr = {
-                tempText = "$it\n"
+                val tempText = "$it\n"
                 if (tempText.startsWith("[H[J")) { // clear command
-                    text = tempText.substring(6)
+                    displayBuffer.setLength(0)
+                    displayBuffer.append(tempText.substring(6))
                 } else {
-                    text += tempText
+                    displayBuffer.append(tempText)
                 }
-                logContent.append(it).append("\n")
+                fullLogBuffer.append(it).append("\n")
             })
         }
     }
@@ -128,7 +146,7 @@ fun InstallScreen(navigator: DestinationsNavigator, uri: Uri, type: MODULE_TYPE)
                     Environment.getExternalStoragePublicDirectory(Environment.DIRECTORY_DOWNLOADS),
                     "APatch_install_${type}_log_${date}.log"
                 )
-                file.writeText(logContent.toString())
+                file.writeText(fullLogBuffer.toString())
                 snackBarHost.showSnackbar("Log saved to ${file.absolutePath}")
             }
         })
