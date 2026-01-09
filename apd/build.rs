@@ -45,8 +45,6 @@ fn main() {
     // update VersionCode when git repository change
     println!("cargo:rerun-if-changed=../.git/HEAD");
     println!("cargo:rerun-if-changed=../.git/refs/");
-    // Force rebuild every time
-    println!("cargo:rerun-if-changed=build.rs");
 
     let (code, name) = match get_git_version() {
         Ok((code, name)) => (code, name),
