@@ -368,12 +368,12 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                     }
 
                     val themeItems = listOf(
-                        stringResource(id = R.string.settings_theme_mode_system),
-                        stringResource(id = R.string.settings_theme_mode_light),
-                        stringResource(id = R.string.settings_theme_mode_dark),
                         stringResource(id = R.string.settings_theme_mode_monet_system),
                         stringResource(id = R.string.settings_theme_mode_monet_light),
                         stringResource(id = R.string.settings_theme_mode_monet_dark),
+                        stringResource(id = R.string.settings_theme_mode_system),
+                        stringResource(id = R.string.settings_theme_mode_light),
+                        stringResource(id = R.string.settings_theme_mode_dark),
                     )
 
                     SuperDropdown(
@@ -388,11 +388,11 @@ fun SettingScreen(navigator: DestinationsNavigator) {
 
                     // Home Layout
                     val homeLayoutItems = listOf(
-                        stringResource(id = R.string.settings_home_layout_default),
-                        stringResource(id = R.string.settings_home_layout_list)
+                        stringResource(id = R.string.settings_home_layout_list),
+                        stringResource(id = R.string.settings_home_layout_default)
                     )
-                    val homeLayoutValues = listOf("default", "list")
-                    var currentHomeLayout by rememberSaveable { mutableStateOf(prefs.getString("home_layout_style", "default") ?: "default") }
+                    val homeLayoutValues = listOf("list", "default")
+                    var currentHomeLayout by rememberSaveable { mutableStateOf(prefs.getString("home_layout_style", "list") ?: "list") }
                     var homeLayoutIndex = homeLayoutValues.indexOf(currentHomeLayout)
                     if (homeLayoutIndex == -1) homeLayoutIndex = 0
 

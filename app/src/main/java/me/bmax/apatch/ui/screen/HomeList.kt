@@ -381,7 +381,19 @@ private fun KStatusCardList(
     val showAuthKeyDialog = remember { mutableStateOf(false) }
     AuthSuperKeyList(showAuthKeyDialog, showAuthFailedTipDialog)
 
+    val isInstalled = kpState == APApplication.State.KERNELPATCH_INSTALLED ||
+                      kpState == APApplication.State.KERNELPATCH_NEED_UPDATE ||
+                      kpState == APApplication.State.KERNELPATCH_NEED_REBOOT
+
     Card(
+        colors = if (isInstalled) {
+            CardDefaults.defaultColors(
+                color = MiuixTheme.colorScheme.primary,
+                contentColor = MiuixTheme.colorScheme.onPrimary
+            )
+        } else {
+            CardDefaults.defaultColors()
+        },
         onClick = {
             if (kpState != APApplication.State.KERNELPATCH_INSTALLED) {
                 navigator.navigate(InstallModeSelectScreenDestination)
@@ -398,7 +410,8 @@ private fun KStatusCardList(
                 Row {
                     Text(
                         text = stringResource(R.string.kernel_patch),
-                        style = MiuixTheme.textStyles.body2
+                        style = MiuixTheme.textStyles.body2,
+                        color = if (isInstalled) MiuixTheme.colorScheme.onPrimary else MiuixTheme.colorScheme.onSurface
                     )
                 }
             }
@@ -431,6 +444,7 @@ private fun KStatusCardList(
                             Text(
                                 text = stringResource(R.string.home_working) + "😋",
                                 style = MiuixTheme.textStyles.body1,
+                                color = MiuixTheme.colorScheme.onPrimary,
                                 fontWeight = FontWeight.SemiBold
                             )
                         }
@@ -439,6 +453,7 @@ private fun KStatusCardList(
                             Text(
                                 text = stringResource(R.string.home_need_update) + "😋",
                                 style = MiuixTheme.textStyles.body2,
+                                color = MiuixTheme.colorScheme.onPrimary
                             )
                             Spacer(Modifier.height(6.dp))
                             Text(
@@ -446,7 +461,8 @@ private fun KStatusCardList(
                                     R.string.kpatch_version_update,
                                     Version.installedKPVString(),
                                     Version.buildKPVString()
-                                ), style = MiuixTheme.textStyles.body2
+                                ), style = MiuixTheme.textStyles.body2,
+                                color = MiuixTheme.colorScheme.onPrimary
                             )
                         }
 
@@ -465,7 +481,8 @@ private fun KStatusCardList(
                         Spacer(Modifier.height(4.dp))
                         Text(
                             text = "${Version.installedKPVString()} (${managerVersion.second}) - " + if (apState != APApplication.State.ANDROIDPATCH_NOT_INSTALLED) "Full" else "KernelPatch",
-                            style = MiuixTheme.textStyles.body2
+                            style = MiuixTheme.textStyles.body2,
+                            color = MiuixTheme.colorScheme.onPrimary
                         )
                     }
                 }
@@ -473,7 +490,9 @@ private fun KStatusCardList(
                 Column(
                     modifier = Modifier.align(Alignment.CenterVertically)
                 ) {
-                    Button(onClick = {
+                    Button(
+                        colors = if (isInstalled) ButtonDefaults.buttonColors(Color.Transparent) else ButtonDefaults.buttonColors(),
+                        onClick = {
                         when (kpState) {
                             APApplication.State.UNKNOWN_STATE -> {
                                 showAuthKeyDialog.value = true
@@ -511,11 +530,17 @@ private fun KStatusCardList(
                             }
 
                             APApplication.State.KERNELPATCH_NEED_UPDATE -> {
-                                Text(text = stringResource(id = R.string.home_ap_cando_update))
+                                Text(
+                                    text = stringResource(id = R.string.home_ap_cando_update),
+                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                )
                             }
 
                             APApplication.State.KERNELPATCH_NEED_REBOOT -> {
-                                Text(text = stringResource(id = R.string.home_ap_cando_reboot))
+                                Text(
+                                    text = stringResource(id = R.string.home_ap_cando_reboot),
+                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                )
                             }
 
                             APApplication.State.KERNELPATCH_UNINSTALLING -> {
@@ -523,7 +548,10 @@ private fun KStatusCardList(
                             }
 
                             else -> {
-                                Text(text = stringResource(id = R.string.home_ap_cando_uninstall))
+                                Text(
+                                    text = stringResource(id = R.string.home_ap_cando_uninstall),
+                                    color = if (isInstalled) Color.White else Color.Unspecified
+                                )
                             }
                         }
                     })

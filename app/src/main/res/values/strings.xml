@@ -268,8 +268,8 @@
     <string name="settings_theme_mode_monet_dark">Monet (Dark)</string>
 
     <string name="settings_home_layout_style">Home layout style</string>
-    <string name="settings_home_layout_default" translatable="false">Default</string>
-    <string name="settings_home_layout_list" translatable="false">List</string>
+    <string name="settings_home_layout_default" translatable="false">GridUI</string>
+    <string name="settings_home_layout_list" translatable="false">ListUI</string>
 
     <string name="settings_night_mode_follow_sys">Follow system\'s dark theme</string>
     <string name="settings_night_mode_follow_sys_summary">Automatically switch to dark theme based on system settings</string>
