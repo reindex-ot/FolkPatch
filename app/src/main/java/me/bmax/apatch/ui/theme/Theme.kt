@@ -33,8 +33,9 @@ fun APatchTheme(
             keyColor = keyColor,
         )
 
-        3 -> ThemeController(ColorSchemeMode.Light)
-        4 -> ThemeController(ColorSchemeMode.Dark)
+        3 -> ThemeController(ColorSchemeMode.System)
+        4 -> ThemeController(ColorSchemeMode.Light)
+        5 -> ThemeController(ColorSchemeMode.Dark)
 
         else -> ThemeController(ColorSchemeMode.System)
     }
@@ -51,8 +52,8 @@ fun APatchTheme(
 @ReadOnlyComposable
 fun isInDarkTheme(themeMode: Int): Boolean {
     return when (themeMode) {
-        1, 3 -> false  // MonetLight, Light
-        2, 4 -> true   // MonetDark, Dark
-        else -> isSystemInDarkTheme()  // MonetSystem (0) or System (default)
+        1, 4 -> false  // MonetLight, Light
+        2, 5 -> true   // MonetDark, Dark
+        else -> isSystemInDarkTheme()  // MonetSystem (0) or System (3)
     }
 }
