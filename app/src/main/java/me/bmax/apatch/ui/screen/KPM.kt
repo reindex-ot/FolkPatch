@@ -7,6 +7,9 @@ import android.util.Log
 import android.widget.Toast
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.fadeIn
+import androidx.compose.animation.fadeOut
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -25,29 +28,18 @@ import androidx.compose.foundation.lazy.LazyListState
 import androidx.compose.foundation.lazy.items
 import androidx.compose.foundation.lazy.rememberLazyListState
 import androidx.compose.foundation.shape.RoundedCornerShape
-import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.foundation.text.KeyboardOptions
+import androidx.compose.foundation.text.KeyboardActions
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.material.icons.filled.Download
+import androidx.compose.material.icons.filled.Search
 import androidx.compose.material.icons.filled.Settings
-import androidx.compose.material3.AlertDialogDefaults
-import androidx.compose.material3.BasicAlertDialog
-import androidx.compose.material3.Button
-import androidx.compose.material3.DropdownMenu
-import androidx.compose.material3.DropdownMenuItem
-import androidx.compose.material3.ExperimentalMaterial3Api
-import androidx.compose.material3.FilledTonalButton
-import androidx.compose.material3.FloatingActionButton
-import androidx.compose.material3.HorizontalDivider
-import androidx.compose.material3.Icon
-import androidx.compose.material3.IconButton
-import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.OutlinedTextField
-import androidx.compose.material3.Scaffold
-import androidx.compose.material3.Surface
-import androidx.compose.material3.Text
-import androidx.compose.material3.TextButton
-import androidx.compose.material3.TopAppBar
+import androidx.compose.material.icons.outlined.Delete
+import androidx.compose.material.ExperimentalMaterialApi
+import androidx.compose.material3.*
 import androidx.compose.material3.pulltorefresh.PullToRefreshBox
+import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.MutableState
@@ -60,11 +52,16 @@ import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.alpha
+import androidx.compose.ui.focus.FocusRequester
+import androidx.compose.ui.focus.focusRequester
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalSoftwareKeyboardController
 import androidx.compose.ui.platform.LocalView
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.VisualTransformation
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.text.style.TextDecoration
@@ -73,6 +70,7 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.window.DialogProperties
 import androidx.compose.ui.window.DialogWindowProvider
 import androidx.compose.ui.window.PopupProperties
+import androidx.activity.compose.BackHandler
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.ramcosta.composedestinations.annotation.Destination
 import com.ramcosta.composedestinations.annotation.RootGraph
@@ -93,6 +91,7 @@ import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.component.ConfirmResult
 import me.bmax.apatch.ui.component.KPModuleRemoveButton
 import me.bmax.apatch.ui.component.KpmAutoLoadManager
+import me.bmax.apatch.ui.component.SearchAppBar
 import me.bmax.apatch.ui.component.LoadingDialogHandle
 import me.bmax.apatch.ui.component.ProvideMenuShape
 import me.bmax.apatch.ui.component.WallpaperAwareDropdownMenu
@@ -176,6 +175,19 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
     val kpModuleListState = rememberLazyListState()
 
+    var searchQuery by remember { mutableStateOf("") }
+    val filteredModuleList = remember(viewModel.moduleList, searchQuery) {
+        if (searchQuery.isEmpty()) {
+            viewModel.moduleList
+        } else {
+            viewModel.moduleList.filter {
+                it.name.contains(searchQuery, ignoreCase = true) ||
+                it.description.contains(searchQuery, ignoreCase = true) ||
+                it.author.contains(searchQuery, ignoreCase = true)
+            }
+        }
+    }
+
     val scope = rememberCoroutineScope()
     suspend fun checkStrongBiometric(): Boolean {
         val prefs = APApplication.sharedPreferences
@@ -191,7 +203,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
     }
 
     Scaffold(topBar = {
-        TopBar(navigator)
+        TopBar(navigator, searchQuery) { searchQuery = it }
     }, floatingActionButton = run {
         {
             val scope = rememberCoroutineScope()
@@ -301,6 +313,7 @@ fun KPModuleScreen(navigator: DestinationsNavigator) {
 
         KPModuleList(
             viewModel = viewModel,
+            moduleList = filteredModuleList,
             modifier = Modifier
                 .padding(innerPadding)
                 .fillMaxSize(),
@@ -525,6 +538,7 @@ fun KPMControlDialog(showDialog: MutableState<Boolean>) {
 @Composable
 private fun KPModuleList(
     viewModel: KPModuleViewModel,
+    moduleList: List<KPModel.KPMInfo>,
     modifier: Modifier = Modifier,
     state: LazyListState,
     showMoreModuleInfo: Boolean,
@@ -585,7 +599,7 @@ private fun KPModuleList(
             },
         ) {
             when {
-                viewModel.moduleList.isEmpty() -> {
+                moduleList.isEmpty() -> {
                     item {
                         Box(
                             modifier = Modifier.fillParentMaxSize(),
@@ -599,7 +613,7 @@ private fun KPModuleList(
                 }
 
                 else -> {
-                    items(viewModel.moduleList) { module ->
+                    items(moduleList) { module ->
                         val scope = rememberCoroutineScope()
                         KPModuleItem(
                             module,
@@ -628,25 +642,111 @@ private fun KPModuleList(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-private fun TopBar(navigator: DestinationsNavigator) {
+private fun TopBar(
+    navigator: DestinationsNavigator,
+    searchQuery: String,
+    onSearchQueryChange: (String) -> Unit
+) {
+    val keyboardController = LocalSoftwareKeyboardController.current
+    val focusRequester = remember { FocusRequester() }
+    var onSearch by remember { mutableStateOf(false) }
+
+    if (onSearch) {
+        LaunchedEffect(Unit) { focusRequester.requestFocus() }
+    }
+
+    BackHandler(
+        enabled = onSearch,
+        onBack = {
+            keyboardController?.hide()
+            onSearchQueryChange("")
+            onSearch = false
+        }
+    )
+
     TopAppBar(
-        title = { Text(stringResource(R.string.kpm)) },
-        actions = {
-            IconButton(onClick = {
-                navigator.navigate(OnlineKPMScreenDestination)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Download,
-                    contentDescription = "Online KPM"
+        title = {
+            Box {
+                // 标题（搜索框未显示时）
+                AnimatedVisibility(
+                    modifier = Modifier.align(Alignment.CenterStart),
+                    visible = !onSearch,
+                    enter = fadeIn(),
+                    exit = fadeOut(),
+                    content = { Text(stringResource(R.string.kpm)) }
                 )
+
+                // 搜索框（搜索时显示）
+                AnimatedVisibility(
+                    visible = onSearch,
+                    enter = fadeIn(),
+                    exit = fadeOut()
+                ) {
+                    OutlinedTextField(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(top = 2.dp, bottom = 2.dp, end = 14.dp)
+                            .focusRequester(focusRequester)
+                            .onFocusChanged { focusState ->
+                                if (focusState.isFocused) onSearch = true
+                            },
+                        value = searchQuery,
+                        onValueChange = onSearchQueryChange,
+                        shape = RoundedCornerShape(15.dp),
+                        trailingIcon = {
+                            IconButton(
+                                onClick = {
+                                    onSearch = false
+                                    keyboardController?.hide()
+                                    onSearchQueryChange("")
+                                },
+                                content = { Icon(Icons.Filled.Close, null) }
+                            )
+                        },
+                        maxLines = 1,
+                        singleLine = true,
+                        keyboardOptions = KeyboardOptions(
+                            keyboardType = KeyboardType.Text,
+                            imeAction = ImeAction.Search
+                        ),
+                        keyboardActions = KeyboardActions {
+                            keyboardController?.hide()
+                        },
+                    )
+                }
             }
-            IconButton(onClick = {
-                navigator.navigate(KpmAutoLoadConfigScreenDestination)
-            }) {
-                Icon(
-                    imageVector = Icons.Filled.Settings,
-                    contentDescription = stringResource(R.string.kpm_autoload_title)
-                )
+        },
+        actions = {
+            AnimatedVisibility(
+                visible = !onSearch
+            ) {
+                Row(verticalAlignment = Alignment.CenterVertically) {
+                    // 搜索按钮
+                    IconButton(onClick = { onSearch = true }) {
+                        Icon(
+                            imageVector = Icons.Filled.Search,
+                            contentDescription = "Search"
+                        )
+                    }
+                    // 下载按钮
+                    IconButton(onClick = {
+                        navigator.navigate(OnlineKPMScreenDestination)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Download,
+                            contentDescription = "Online KPM"
+                        )
+                    }
+                    // 设置按钮
+                    IconButton(onClick = {
+                        navigator.navigate(KpmAutoLoadConfigScreenDestination)
+                    }) {
+                        Icon(
+                            imageVector = Icons.Filled.Settings,
+                            contentDescription = stringResource(R.string.kpm_autoload_title)
+                        )
+                    }
+                }
             }
         }
     )
