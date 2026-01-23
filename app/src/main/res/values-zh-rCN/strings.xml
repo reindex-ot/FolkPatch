@@ -336,8 +336,6 @@
     <string name="settings_app_dpi">应用 DPI</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">启用内置的模块挂载系统</string>
-    <string name="settings_overlayfs_mode">混合挂载模式</string>
-    <string name="settings_overlayfs_mode_summary">使用 OverlayFS 并自动回退到 Magic Mount 以获得最大兼容性</string>
     <string name="settings_app_title">应用名称</string>
     <string name="settings_custom_background">自定义背景</string>
     <string name="settings_custom_background_enabled">已启用自定义背景</string>

@@ -8,11 +8,9 @@ pub const APATCH_LOG_FOLDER: &str = concatcp!(WORKING_DIR, "log/");
 pub const AP_RC_PATH: &str = concatcp!(WORKING_DIR, ".aprc");
 pub const GLOBAL_NAMESPACE_FILE: &str = concatcp!(ADB_DIR, ".global_namespace_enable");
 pub const MAGIC_MOUNT_FILE: &str = concatcp!(ADB_DIR, ".magic_mount_enable");
-pub const OVERLAYFS_MODE_FILE: &str = concatcp!(ADB_DIR, ".overlayfs_mode_enable");
 pub const DAEMON_PATH: &str = concatcp!(ADB_DIR, "apd");
 
 pub const MODULE_DIR: &str = concatcp!(ADB_DIR, "modules/");
-pub const AP_OVERLAY_SOURCE: &str = concatcp!(WORKING_DIR, "overlay");
 pub const AP_MAGIC_MOUNT_SOURCE: &str = concatcp!(WORKING_DIR, "magic_mount");
 
 // warning: this directory should not change, or you need to change the code in module_installer.sh!!!

@@ -334,8 +334,6 @@
     <string name="settings_app_dpi">DPI ứng dụng</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Bật hệ thống gắn kết mô-đun tích hợp</string>
-    <string name="settings_overlayfs_mode">Chế độ gắn kết lai</string>
-    <string name="settings_overlayfs_mode_summary">Sử dụng OverlayFS với tự động chuyển sang Magic Mount để có độ tương thích tối đa</string>
     <string name="settings_app_title">Tên ứng dụng</string>
     <string name="settings_custom_background">Hình nền tùy chỉnh</string>
     <string name="settings_custom_background_enabled">Đã bật hình nền tùy chỉnh</string>

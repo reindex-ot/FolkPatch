@@ -326,8 +326,6 @@
     <string name="settings_app_dpi">仙器DPI</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">启内建仙符挂载系统</string>
-    <string name="settings_overlayfs_mode">仙域混合挂载</string>
-    <string name="settings_overlayfs_mode_summary">用 OverlayFS 仙域并自退到 Magic Mount 仙术得最大兼容</string>
     <string name="settings_app_title">仙器名讳</string>
     <string name="settings_custom_background">自定仙府背景</string>
     <string name="settings_custom_background_enabled">已启自定仙府背景</string>

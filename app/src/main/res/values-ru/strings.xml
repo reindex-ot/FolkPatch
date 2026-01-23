@@ -337,8 +337,6 @@
     <string name="settings_app_dpi">DPI приложения</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Включить встроенную систему монтирования модулей</string>
-    <string name="settings_overlayfs_mode">Гибридный режим монтирования</string>
-    <string name="settings_overlayfs_mode_summary">Использовать OverlayFS с автоматическим переключением на Magic Mount для максимальной совместимости</string>
     <string name="settings_app_title">Заголовок приложения</string>
     <string name="settings_custom_background">Пользовательский фон</string>
     <string name="settings_custom_background_enabled">Пользовательский фон включен</string>

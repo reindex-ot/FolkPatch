@@ -372,19 +372,6 @@ fun setMagicMountEnabled(enable: Boolean) {
         }
 }
 
-fun isOverlayFSModeEnabled(): Boolean {
-    val overlayfsMode = SuFile(APApplication.OVERLAYFS_MODE_FILE)
-    overlayfsMode.shell = getRootShell()
-    return overlayfsMode.exists()
-}
-
-fun setOverlayFSModeEnabled(enable: Boolean) {
-    getRootShell().newJob().add("${if (enable) "touch" else "rm -rf"} ${APApplication.OVERLAYFS_MODE_FILE}")
-        .submit { result ->
-            Log.i(TAG, "setOverlayFSModeEnabled result: ${result.isSuccess} [${result.out}]")
-        }
-}
-
 /**
  * Get current SELinux mode
  * @return "Enforcing" | "Permissive" | "Unknown"

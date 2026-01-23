@@ -14,8 +14,8 @@ use anyhow::{Context, Result};
 use libc::SIGPWR;
 use log::{info, warn};
 use notify::{
-    Config, Event, EventKind, INotifyWatcher, RecursiveMode, Watcher,
     event::{ModifyKind, RenameMode},
+    Config, Event, EventKind, INotifyWatcher, RecursiveMode, Watcher,
 };
 use signal_hook::{consts::signal::*, iterator::Signals};
 
@@ -24,9 +24,7 @@ use crate::{
     supercall::{
         fork_for_result, init_load_package_uid_config, init_load_su_path, refresh_ap_package_list,
     },
-    utils::{
-        self, switch_cgroups,
-    },
+    utils::{self, switch_cgroups},
 };
 
 pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
@@ -49,23 +47,9 @@ pub fn on_post_data_fs(superkey: Option<String>) -> Result<()> {
     }
 
     if Path::new(defs::MAGIC_MOUNT_FILE).exists() {
-        // Check which mount mode to use
-        let use_overlayfs = Path::new(defs::OVERLAYFS_MODE_FILE).exists();
-
-        if use_overlayfs {
-            info!("OverlayFS mode enabled");
-            if let Err(e) = crate::magic_mount::overlayfs_mount() {
-                log::error!("OverlayFS mount failed: {}", e);
-                warn!("Falling back to Magic Mount mode");
-                if let Err(e) = crate::magic_mount::magic_mount() {
-                    log::error!("Magic Mount fallback also failed: {}", e);
-                }
-            }
-        } else {
-            info!("Magic Mount mode enabled");
-            if let Err(e) = crate::magic_mount::magic_mount() {
-                log::error!("Magic Mount failed: {}", e);
-            }
+        info!("Magic Mount mode enabled");
+        if let Err(e) = crate::magic_mount::magic_mount() {
+            log::error!("Magic Mount failed: {}", e);
         }
     } else {
         info!("Magic Mount disabled");

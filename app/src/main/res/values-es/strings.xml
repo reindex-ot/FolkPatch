@@ -340,8 +340,6 @@
     <string name="settings_app_dpi">DPI de la App</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Activar el sistema de montaje de módulos integrado</string>
-    <string name="settings_overlayfs_mode">Modo de Montaje Híbrido</string>
-    <string name="settings_overlayfs_mode_summary">Usar OverlayFS con respaldo automático a Magic Mount para máxima compatibilidad</string>
     <string name="settings_app_title">Título de la App</string>
     <string name="settings_custom_background">Fondo Personalizado</string>
     <string name="settings_custom_background_enabled">Fondo Personalizado Habilitado</string>

@@ -197,7 +197,7 @@
     <string name="apm_version">Version</string>
     <string name="apm_author">Author</string>
     <string name="apm_desc">Desc</string>
-    <string name="apm_overlay_fs_not_available">Modules are unavailable as OverlayFS is disabled by the kernel!</string>
+    <string name="apm_overlay_fs_not_available">Modules are unavailable as OverlayFS is disabled by kernel!</string>
     <string name="apm_magisk_conflict">Modules are unavailable due to a conflict with Magisk!</string>
     <string name="apm_mount_warning_title">Important Notice</string>
     <string name="apm_mount_warning_message">Modules are not mounted by default. Please use built-in mounting system or metamodule.</string>
@@ -343,8 +343,6 @@
     <string name="settings_app_dpi">App DPI</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">Enable the built-in module mounting system</string>
-    <string name="settings_overlayfs_mode">Hybrid Mount Mode</string>
-    <string name="settings_overlayfs_mode_summary">Use OverlayFS with automatic Magic Mount fallback for maximum compatibility</string>
     <string name="settings_app_title">App Title</string>
     <string name="settings_custom_background">Custom Background</string>
     <string name="settings_custom_background_enabled">Custom Background Enabled</string>

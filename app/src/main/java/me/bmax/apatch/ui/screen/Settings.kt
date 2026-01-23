@@ -154,12 +154,10 @@ import me.bmax.apatch.util.PermissionUtils
 import me.bmax.apatch.util.getBugreportFile
 import me.bmax.apatch.util.isGlobalNamespaceEnabled
 import me.bmax.apatch.util.isMagicMountEnabled
-import me.bmax.apatch.util.isOverlayFSModeEnabled
 import me.bmax.apatch.util.outputStream
 import me.bmax.apatch.util.rootShellForResult
 import me.bmax.apatch.util.setGlobalNamespaceEnabled
 import me.bmax.apatch.util.setMagicMountEnabled
-import me.bmax.apatch.util.setOverlayFSModeEnabled
 import me.bmax.apatch.util.getSELinuxMode
 import me.bmax.apatch.util.setSELinuxMode
 import me.bmax.apatch.util.ui.APDialogBlurBehindUtils
@@ -212,9 +210,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     var isMagicMountEnabled by rememberSaveable {
         mutableStateOf(false)
     }
-    var isOverlayFSModeEnabled by rememberSaveable {
-        mutableStateOf(false)
-    }
     var currentSELinuxMode by rememberSaveable {
         mutableStateOf("Unknown")
     }
@@ -226,7 +221,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
     if (kPatchReady && aPatchReady) {
         isGlobalNamespaceEnabled = isGlobalNamespaceEnabled()
         isMagicMountEnabled = isMagicMountEnabled()
-        isOverlayFSModeEnabled = isOverlayFSModeEnabled()
         currentSELinuxMode = getSELinuxMode()
     }
 
@@ -605,10 +599,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val magicMountSummary = stringResource(id = R.string.settings_magic_mount_summary)
             val showMagicMount = (kPatchReady && aPatchReady) && (matchGeneral || shouldShow(magicMountTitle, magicMountSummary))
 
-            val overlayFSModeTitle = stringResource(id = R.string.settings_overlayfs_mode)
-            val overlayFSModeSummary = stringResource(id = R.string.settings_overlayfs_mode_summary)
-            val showOverlayFSMode = (kPatchReady && aPatchReady && isMagicMountEnabled) && (matchGeneral || shouldShow(overlayFSModeTitle, overlayFSModeSummary))
-
             val selinuxModeTitle = stringResource(id = R.string.settings_selinux_mode)
             val selinuxModeSummary = stringResource(id = R.string.settings_selinux_mode_summary)
             val selinuxModeValue = when (currentSELinuxMode) {
@@ -652,7 +642,7 @@ fun SettingScreen(navigator: DestinationsNavigator) {
             val currentSchemeLabel = if (currentScheme == "root_service") stringResource(R.string.app_list_loading_scheme_root_service) else stringResource(R.string.app_list_loading_scheme_package_manager)
             val showAppListLoadingScheme = matchGeneral || shouldShow(appListLoadingSchemeTitle, currentSchemeLabel)
 
-            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showOverlayFSMode || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme || showSELinuxMode
+            val showGeneralCategory = showLanguage || showUpdate || showAutoUpdate || showGlobalNamespace || showMagicMount || showResetSuPath || showAppTitle || showLauncherIcon || showDesktopAppName || showDpi || showLog || showFolkXEngine || showAppListLoadingScheme || showSELinuxMode
 
             if (showGeneralCategory) {
                 SettingsCategory(icon = Icons.Filled.Tune, title = generalTitle, isSearching = searchText.isNotEmpty()) {
@@ -821,19 +811,6 @@ fun SettingScreen(navigator: DestinationsNavigator) {
                             onCheckedChange = {
                                 setMagicMountEnabled(it)
                                 isMagicMountEnabled = it
-                            })
-                    }
-
-                    // OverlayFS Mode
-                    if (showOverlayFSMode) {
-                        SwitchItem(
-                            icon = Icons.Filled.FilterList,
-                            title = overlayFSModeTitle,
-                            summary = overlayFSModeSummary,
-                            checked = isOverlayFSModeEnabled,
-                            onCheckedChange = {
-                                setOverlayFSModeEnabled(it)
-                                isOverlayFSModeEnabled = it
                             })
                     }
 

@@ -341,8 +341,6 @@
     <string name="settings_app_dpi">DPI التطبيق</string>
     <string name="settings_magic_mount">Folk Mount API</string>
     <string name="settings_magic_mount_summary">تفعيل نظام تركيب الوحدات المدمج</string>
-    <string name="settings_overlayfs_mode">وضع التركيب الهجين</string>
-    <string name="settings_overlayfs_mode_summary">استخدام OverlayFS مع العودة التلقائية إلى Magic Mount للحصول على أقصى قدر من التوافق</string>
     <string name="settings_app_title">عنوان التطبيق</string>
     <string name="settings_custom_background">خلفية مخصصة</string>
     <string name="settings_custom_background_enabled">تمكين الخلفية المخصصة</string>
