@@ -7,9 +7,12 @@ import android.content.pm.Signature
 import android.database.Cursor
 import android.net.Uri
 import android.os.Build
+import android.os.Handler
+import android.os.Looper
 import android.provider.OpenableColumns
 import android.util.Base64
 import android.util.Log
+import android.widget.Toast
 import com.topjohnwu.superuser.CallbackList
 import com.topjohnwu.superuser.Shell
 import com.topjohnwu.superuser.ShellUtils
@@ -17,6 +20,7 @@ import com.topjohnwu.superuser.io.SuFile
 import me.bmax.apatch.APApplication
 import me.bmax.apatch.APApplication.Companion.SUPERCMD
 import me.bmax.apatch.BuildConfig
+import me.bmax.apatch.R
 import me.bmax.apatch.apApp
 import me.bmax.apatch.ui.screen.MODULE_TYPE
 import java.io.File
@@ -211,10 +215,30 @@ fun installModule(
     uri: Uri, type: MODULE_TYPE, onFinish: (Boolean) -> Unit, onStdout: (String) -> Unit, onStderr: (String) -> Unit
 ): Boolean {
     val resolver = apApp.contentResolver
-    with(resolver.openInputStream(uri)) {
+    val permissionMessage = apApp.getString(R.string.file_picker_permission_desc)
+    val inputStream = try {
+        resolver.openInputStream(uri)
+    } catch (e: Exception) {
+        Log.e(TAG, "Failed to open input stream", e)
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(apApp, permissionMessage, Toast.LENGTH_SHORT).show()
+        }
+        onStderr("$permissionMessage\n")
+        onFinish(false)
+        return false
+    }
+    if (inputStream == null) {
+        Handler(Looper.getMainLooper()).post {
+            Toast.makeText(apApp, permissionMessage, Toast.LENGTH_SHORT).show()
+        }
+        onStderr("$permissionMessage\n")
+        onFinish(false)
+        return false
+    }
+    inputStream.use { input ->
         val file = File(apApp.cacheDir, "module_$type.zip")
         file.outputStream().use { output ->
-            this?.copyTo(output)
+            input.copyTo(output)
         }
 
         // Auto Backup Logic
