@@ -646,6 +646,7 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="home_info_running_mode">Modo de Ejecución</string>
     <string name="home_info_mode_full">Completo (Full)</string>
     <string name="home_info_mode_half">Medio (Half)</string>
+    <string name="home_version">Versión: %s</string>
     <string name="home_zygisk_implement">Implementación de Zygisk</string>
     <string name="home_mount_implement">Implementación de Montaje</string>
 

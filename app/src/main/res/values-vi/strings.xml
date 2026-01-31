@@ -650,6 +650,7 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="home_info_running_mode">Chế độ chạy</string>
     <string name="home_info_mode_full">Đầy đủ</string>
     <string name="home_info_mode_half">Một phần</string>
+    <string name="home_version">Phiên bản: %s</string>
     <string name="home_zygisk_implement">Triển khai Zygisk</string>
     <string name="home_mount_implement">Triển khai gắn kết</string>
 

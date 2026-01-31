@@ -655,6 +655,7 @@
     <string name="home_info_running_mode">وضع التشغيل</string>
     <string name="home_info_mode_full">كامل</string>
     <string name="home_info_mode_half">نصف</string>
+    <string name="home_version">النسخة: %s</string>
     <string name="home_zygisk_implement">تنفيذ Zygisk</string>
     <string name="home_mount_implement">تنفيذ التثبيت</string>
 

@@ -654,6 +654,7 @@ Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby 
     <string name="home_info_running_mode">Tryb działania</string>
     <string name="home_info_mode_full">Pełny</string>
     <string name="home_info_mode_half">Częściowy</string>
+    <string name="home_version">Wersja: %s</string>
     <string name="home_zygisk_implement">Implementacja Zygisk</string>
     <string name="home_mount_implement">Implementacja montowania</string>
 

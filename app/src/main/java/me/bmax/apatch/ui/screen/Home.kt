@@ -71,6 +71,8 @@ import androidx.compose.material3.DropdownMenu
 import androidx.compose.material3.DropdownMenuItem
 import me.bmax.apatch.ui.theme.BackgroundConfig
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.Card
+import androidx.compose.material3.surfaceColorAtElevation
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
@@ -163,7 +165,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
         showPatchFloatAction = false
     }
 
-    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "focus")
+    val homeLayout = APApplication.sharedPreferences.getString("home_layout_style", "circle")
 
     Scaffold(topBar = {
         TopBar(onInstallClick = dropUnlessResumed {
@@ -174,6 +176,7 @@ fun HomeScreen(navigator: DestinationsNavigator) {
             "kernelsu" -> HomeScreenV2(innerPadding, navigator, kpState, apState)
             "focus" -> HomeScreenV3(innerPadding, navigator, kpState, apState)
             "sign" -> HomeScreenSign(innerPadding, navigator, kpState, apState)
+            "circle" -> HomeScreenCircle(innerPadding, navigator, kpState, apState)
             else -> HomeScreenV1(innerPadding, navigator, kpState, apState)
         }
     }
@@ -728,23 +731,21 @@ private fun KStatusCard(
         }
 
         else -> {
-            MaterialTheme.colorScheme.secondaryContainer to MaterialTheme.colorScheme.onSecondaryContainer
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp) to MaterialTheme.colorScheme.onSurface
         }
     }
 
-    ElevatedCard(
+    Card(
         onClick = {
             if (kpState != APApplication.State.KERNELPATCH_INSTALLED) {
                 navigator.navigate(InstallModeSelectScreenDestination)
             }
         },
-        colors = CardDefaults.elevatedCardColors(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(
             containerColor = cardBackgroundColor,
             contentColor = cardContentColor
-        ),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+        )
     ) {
         Column(
             modifier = Modifier
@@ -919,17 +920,15 @@ private fun KStatusCard(
 
 @Composable
 fun AStatusCard(apState: APApplication.State) {
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = run {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = run {
             if (BackgroundConfig.isCustomBackgroundEnabled) {
                 MaterialTheme.colorScheme.secondaryContainer.copy(alpha = BackgroundConfig.customBackgroundOpacity)
             } else {
-                MaterialTheme.colorScheme.surfaceContainer
+                MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
             }
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1154,15 +1153,13 @@ fun InfoCard(kpState: APApplication.State, apState: APApplication.State) {
         }
     }
     
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1252,15 +1249,13 @@ fun SignInfoCard(kpState: APApplication.State, apState: APApplication.State) {
         }
     }
 
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Column(
             modifier = Modifier
@@ -1377,15 +1372,13 @@ fun WarningCard(
 fun LearnMoreCard() {
     val uriHandler = LocalUriHandler.current
 
-    ElevatedCard(
-        colors = CardDefaults.elevatedCardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
+    Card(
+        shape = RoundedCornerShape(20.dp),
+        colors = CardDefaults.cardColors(containerColor = if (BackgroundConfig.isCustomBackgroundEnabled) {
             MaterialTheme.colorScheme.surface
         } else {
-            MaterialTheme.colorScheme.surfaceContainer
-        }),
-        elevation = CardDefaults.cardElevation(
-            defaultElevation = if (BackgroundConfig.isCustomBackgroundEnabled) 0.dp else 6.dp
-        ),
+            MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+        })
     ) {
         Row(
             modifier = Modifier

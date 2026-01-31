@@ -645,6 +645,7 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="home_info_running_mode">Modo de Execução</string>
     <string name="home_info_mode_full">Completo</string>
     <string name="home_info_mode_half">Metade (Half)</string>
+    <string name="home_version">Versão: %s</string>
     <string name="home_zygisk_implement">Implementação Zygisk</string>
     <string name="home_mount_implement">Implementação de Montagem</string>
 

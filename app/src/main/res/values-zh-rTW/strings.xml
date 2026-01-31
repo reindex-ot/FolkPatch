@@ -654,6 +654,7 @@
     <string name="home_info_running_mode">運行模式</string>
     <string name="home_info_mode_full">完整</string>
     <string name="home_info_mode_half">部分功能</string>
+    <string name="home_version">版本: %s</string>
     <string name="home_zygisk_implement">Zygisk 實現</string>
     <string name="home_mount_implement">掛載實現</string>
 

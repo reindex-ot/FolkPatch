@@ -603,6 +603,7 @@
   <string name="home_info_running_mode">実行モード</string>
   <string name="home_info_mode_full">完全</string>
   <string name="home_info_mode_half">一部</string>
+  <string name="home_version">バージョン: %s</string>
   <string name="home_zygisk_implement">Zygisk の実装</string>
   <string name="home_mount_implement">マウントの実装</string>
   <string name="settings_list_working_card_hide_mode">一部/完全のカードを非表示</string>

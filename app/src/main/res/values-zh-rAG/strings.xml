@@ -652,6 +652,7 @@
     <string name="home_info_running_mode">运行模式喵</string>
     <string name="home_info_mode_full">完整哒</string>
     <string name="home_info_mode_half">不完全哒</string>
+    <string name="home_version">版本喵: %s</string>
     <string name="home_zygisk_implement">Zygisk实现喵</string>
     <string name="home_mount_implement">挂载实现喵</string>
 

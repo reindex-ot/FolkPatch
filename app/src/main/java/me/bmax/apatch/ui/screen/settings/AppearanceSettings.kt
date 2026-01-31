@@ -229,7 +229,7 @@ fun AppearanceSettings(
 
     // Home Layout
     val homeLayoutTitle = stringResource(id = R.string.settings_home_layout_style)
-    val currentStyle = prefs.getString("home_layout_style", "sign")
+    val currentStyle = prefs.getString("home_layout_style", "circle")
     val homeLayoutValue = stringResource(homeLayoutStyleToString(currentStyle.toString()))
     val showHomeLayout = matchAppearance || shouldShow(searchText, homeLayoutTitle, homeLayoutValue)
 
@@ -1371,6 +1371,7 @@ private fun homeLayoutStyleToString(style: String): Int {
         "kernelsu" -> R.string.settings_home_layout_grid
         "focus" -> R.string.settings_home_layout_focus
         "sign" -> R.string.settings_home_layout_sign
+        "circle" -> R.string.settings_home_layout_circle
         else -> R.string.settings_home_layout_default
     }
 }
@@ -1440,7 +1441,7 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                     modifier = Modifier.padding(bottom = 16.dp)
                 )
                 
-                val currentStyle = prefs.getString("home_layout_style", "focus")
+                val currentStyle = prefs.getString("home_layout_style", "circle")
                 
                 Surface(
                     shape = RoundedCornerShape(12.dp),
@@ -1500,6 +1501,20 @@ fun HomeLayoutChooseDialog(showDialog: MutableState<Boolean>) {
                             },
                             modifier = Modifier.clickable {
                                 prefs.edit().putString("home_layout_style", "sign").apply()
+                                showDialog.value = false
+                            }
+                        )
+
+                        ListItem(
+                            headlineContent = { Text(stringResource(R.string.settings_home_layout_circle)) },
+                            leadingContent = {
+                                RadioButton(
+                                    selected = currentStyle == "circle",
+                                    onClick = null
+                                )
+                            },
+                            modifier = Modifier.clickable {
+                                prefs.edit().putString("home_layout_style", "circle").apply()
                                 showDialog.value = false
                             }
                         )
