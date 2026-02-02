@@ -22,11 +22,11 @@
     <string name="settings_nav_layout_title">底部導覽列設定</string>
     <string name="settings_nav_layout_summary">顯示或隱藏導覽列中的項目</string>
     <string name="settings_nav_scheme">導航方案設定</string>
-    <string name="settings_nav_mode">導覽欄模式</string>
-    <string name="settings_nav_mode_summary">選擇導覽欄的顯示方式</string>
+    <string name="settings_nav_mode">導覽列模式</string>
+    <string name="settings_nav_mode_summary">選擇導覽列的顯示方式</string>
     <string name="settings_nav_mode_auto">自動（根據螢幕寬度）</string>
-    <string name="settings_nav_mode_bottom">始終底部導覽欄</string>
-    <string name="settings_nav_mode_rail">始終側邊導覽欄</string>
+    <string name="settings_nav_mode_bottom">始終底部導覽列</string>
+    <string name="settings_nav_mode_rail">始終側邊導覽列</string>
     <string name="settings_show_apm">顯示系統模組</string>
     <string name="settings_show_kpm">顯示核心模組</string>
     <string name="settings_show_superuser">顯示超級使用者</string>
@@ -49,7 +49,7 @@
     <string name="home_learn_apatch">深入了解 FolkPatch</string>
     <string name="home_click_to_learn_apatch">學習有關 FolkPatch 的功能及使用方式</string>
     <string name="settings_hide_apatch_card">隱藏「了解 FolkPatch」卡片</string>
-    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「了解 FolkPatch」卡片</string>
+    <string name="settings_hide_apatch_card_summary">控制首頁是否顯示「深入了解 FolkPatch」卡片</string>
 
     <string name="send_log">傳送日誌</string>
     <string name="save_log">儲存日誌</string>
@@ -214,14 +214,14 @@
     <string name="settings_folkx_animation_vertical">垂直滑動</string>
     <string name="settings_folkx_animation_diagonal">對角滑動</string>
 
-    <string name="apm_webui_open">開啟網頁介面</string>
+    <string name="apm_webui_open">WebUI</string>
     <string name="apm_action">操作</string>
     <string name="module_shortcut_add">捷徑</string>
     <string name="module_shortcut_not_supported">啟動器不支援桌面捷徑。</string>
     <string name="module_shortcut_created">已在桌面建立捷徑。</string>
     <string name="module_shortcut_updated">捷徑已更新。</string>
     <string name="module_shortcut_permission_tip_xiaomi">請在小米設定中為本應用程式啟用「建立桌面捷徑」權限。</string>
-    <string name="module_shortcut_permission_tip_oppo">請在OPPO設定中為本應用程式啟用「桌面捷徑」權限。</string>
+    <string name="module_shortcut_permission_tip_oppo">請在 OPPO 設定中為本應用程式啟用「桌面捷徑」權限。</string>
     <string name="module_shortcut_permission_tip_default">若建立捷徑失敗，請在系統設定中為本應用程式啟用桌面捷徑權限。</string>
     <string name="module_shortcut_name">捷徑名稱</string>
     <string name="module_shortcut_icon">捷徑圖示</string>
@@ -239,7 +239,7 @@
     <string name="settings_show_disable_all_modules">顯示「停用所有模組」按鈕</string>
     <string name="settings_show_disable_all_modules_summary">在模組頁面顯示一鍵停用所有模組的按鈕</string>
     <string name="settings_module_sort_optimization">模組卡片排序優化</string>
-    <string name="settings_module_sort_optimization_summary">前置系統模組中帶有 WebUI 和 Action 的模組</string>
+    <string name="settings_module_sort_optimization_summary">前置系統模組中帶有「WebUI」和「操作」的模組</string>
     <string name="settings_fold_system_module">折疊系統模組</string>
     <string name="settings_fold_system_module_summary">點擊模組卡片展開/折疊操作按鈕</string>
     <string name="settings_simple_list_bottom_bar">簡約列表底欄</string>
@@ -247,7 +247,7 @@
     <string name="apm_install_confirm_title">安裝模組</string>
     <string name="apm_install_confirm_content">確定要安裝 %s 嗎？</string>
     <string name="apm_disable_all_title">停用所有系統模組</string>
-    <string name="apm_disable_all_confirm">確定停用全部系統模組嗎？一般來說在 OTA 更新前才這麼做。</string>
+    <string name="apm_disable_all_confirm">確定停用全部系統模組嗎？通常在 OTA 更新前採用。</string>
     <string name="apm_enable_module_banner">啟用模組橫幅</string>
     <string name="apm_enable_module_banner_summary">為支援的模組顯示橫幅圖片</string>
     <string name="apm_enable_folk_banner">自訂模組橫幅</string>
@@ -265,14 +265,14 @@
     <string name="settings_donot_store_superkey">停用管理器儲存密鑰</string>
     <string name="settings_donot_store_superkey_summary">每次管理器啟動時驗證超級密鑰</string>
     <string name="settings_show_more_module_info">顯示模組資訊詳情</string>
-    <string name="settings_show_more_module_info_summary">在模組列表中顯示模組 ID 和大小</string>
+    <string name="settings_show_more_module_info_summary">在模組列表中顯示模組 ID、大小等訊息</string>
     <string name="mode_select_page_title">安裝</string>
     <string name="mode_select_page_patch_and_install">直接安裝（通常選擇此項）</string>
-    <string name="mode_select_page_select_file">選取要修補的「boot 映像檔」</string>
+    <string name="mode_select_page_select_file">選取要修補的「Boot 映像檔」</string>
     <string name="mode_select_page_install_inactive_slot">安裝至非使用中的插槽 (OTA 後)</string>
-    <string name="mode_select_page_install_inactive_slot_warning">重新啟動後，您的裝置將**強制**啟動到目前非使用中的插槽！
+    <string name="mode_select_page_install_inactive_slot_warning">重新啟動後，您的裝置將**強制**於目前非使用中的插槽啟動！
 
-注意只能在 OTA 完成後的重啟之前使用。
+注意請僅在 OTA 後重啟設備之前使用。
 
 繼續？</string>
 
@@ -343,13 +343,13 @@
     <string name="online_module_title">線上系統模組</string>
     <string name="online_module_download_start">開始下載：%s</string>
     <string name="online_module_download_complete">下載完成：%s</string>
-    <string name="online_module_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download資料夾中。</string>
+    <string name="online_module_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download 資料夾中。</string>
 
     <!-- Online KPM Strings -->
     <string name="online_kpm_title">線上核心模組</string>
     <string name="online_kpm_download_start">開始下載：%s</string>
     <string name="online_kpm_download_complete">下載完成：%s</string>
-    <string name="online_kpm_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download資料夾中。</string>
+    <string name="online_kpm_download_notification">正在下載 %s。請查看通知列取得下載進度，下載檔案位於 Download 資料夾中。</string>
 
     <!-- Online Script Strings -->
     <string name="online_script_title">線上腳本</string>
@@ -428,11 +428,11 @@
     <string name="settings_grid_working_card_hide_text">隱藏狀態文字</string>
     <string name="settings_grid_working_card_hide_text_summary">隱藏工作卡片上的「工作中」或「未安裝」文字</string>
     <string name="settings_grid_working_card_hide_mode">隱藏工作模式</string>
-    <string name="settings_grid_working_card_hide_mode_summary">隱藏工作卡片上的"Full"或"Half"文字</string>
+    <string name="settings_grid_working_card_hide_mode_summary">隱藏工作卡片上的「Full」或「Half」文字</string>
     <string name="settings_list_working_card_hide_mode">隱藏 Half/Full 小卡片</string>
     <string name="settings_list_working_card_hide_mode_summary">隱藏顯示工作模式的小卡片</string>
     <string name="settings_list_card_hide_status_badge">使用經典表情</string>
-    <string name="settings_list_card_hide_status_badge_summary">首頁的狀態徽章即刻變身經典表情</string>
+    <string name="settings_list_card_hide_status_badge_summary">首頁的狀態徽章替換為經典表情</string>
     <string name="settings_custom_background_dual_dim">啟用日夜雙切模式</string>
     <string name="settings_custom_background_day_dim">白天模式暗度</string>
     <string name="settings_custom_background_night_dim">夜晚模式暗度</string>
@@ -483,10 +483,10 @@
     <string name="next_module">下一個模組</string>
     <string name="apm_bulk_install_log_installed">模組 %s 安裝完成。</string>
     <string name="apm_bulk_install_log_done">所有操作已完成。</string>
-    <string name="apm_bulk_install_first_use_text">這個功能允許你一次性安裝多個模組，屬於快速安裝，適合安裝一些過程中未涉及按鍵操作的模組。若要涉及點按音量鍵等操作的模組，請於設定中啟用「完整批次安裝流程」。</string>
+    <string name="apm_bulk_install_first_use_text">此功能允許一次性安裝多個模組，屬於快速安裝，適合安裝過程中未涉及按鍵操作的模組。若模組安裝過程需點按音量鍵，請於設定中啟用「完整批次安裝流程」。</string>
     <string name="apm_bulk_install_remove">移除</string>
     <string name="apm_first_use_title">歡迎使用系統模組</string>
-    <string name="apm_first_use_text">歡迎使用系統模組。本功能支援相容 Magisk 生態的模組，未來也可能加入對 Lua 模組的支援。您可以點擊右下角的按鈕安裝模組，或使用頂部的安裝器進行模組批次安裝。此外，FolkPatch 也提供一鍵備份所有模組的功能，但請注意，此方式不一定適用於所有模組，建議仍自行額外備份關鍵模組。</string>
+    <string name="apm_first_use_text">歡迎使用系統模組。本功能支援 Magisk 模組，未來也可能加入對 Lua 模組的支援。您可以點擊右下角的按鈕安裝模組，或使用頂部的安裝器進行模組批次安裝。此外，FolkPatch 也提供一鍵備份所有模組的功能，但請注意，此方式不一定適用於所有模組，建議自行備份關鍵模組。</string>
     <!-- Module Backup/Restore Strings -->
     <string name="apm_backup_title">備份模組</string>
     <string name="apm_restore_title">還原模組</string>
@@ -521,19 +521,19 @@
     <string name="auto_backup_failed">自動備份失敗: %s</string>
     <string name="auto_backup_success">自動備份成功: %s</string>
     <string name="settings_auto_backup_boot">自動備份Boot</string>
-    <string name="settings_auto_backup_boot_summary">自動將Boot備份到本地儲存 (Downloads/FolkPatch/BootBackups)</string>
+    <string name="settings_auto_backup_boot_summary">自動將 Boot 分割區備份到本機儲存 (Downloads/FolkPatch/BootBackups)</string>
 
     <!-- Auto-added missing strings -->
-    <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏 「KernelPatch版本」</string>
+    <string name="home_hide_kpatch_version_summary">在資訊卡中隱藏 「KernelPatch 版本」</string>
     <string name="home_hide_su_path_summary">在資訊卡中隱藏「可執行 SU 路徑」</string>
-    <string name="home_hide_zygisk_summary">在資訊卡中隱藏「Zygisk實現」</string>
+    <string name="home_hide_zygisk_summary">在資訊卡中隱藏「Zygisk 實現」</string>
     <string name="home_hide_mount_summary">在資訊卡中隱藏「掛載實現」</string>
     <string name="home_hide_fingerprint_summary">在資訊卡中隱藏「指紋」</string>
     <string name="home_hide_fingerprint">隱藏「指紋」</string>
     <string name="about_source_code"><![CDATA[<p>查看原始碼於 %1$s<p/>加入我們的 %2$s 頻道<p/>加入我們的 %3$s 群組]]></string>
-    <string name="home_hide_kpatch_version">隱藏「KernelPatch版本」</string>
+    <string name="home_hide_kpatch_version">隱藏「KernelPatch 版本」</string>
     <string name="home_hide_su_path">隱藏「可執行 SU 路徑」</string>
-    <string name="home_hide_zygisk">隱藏「Zygisk實現」</string>
+    <string name="home_hide_zygisk">隱藏「Zygisk 實現」</string>
     <string name="home_hide_mount">隱藏「掛載實現」</string>
     <string name="app_title_magicpatch">MagicPatch</string>
 
@@ -573,7 +573,7 @@
     <string name="settings_grid_working_card_background_summary">為工作卡片設定自定義背景圖片</string>
     <string name="settings_grid_working_card_background_selected">背景圖片已選擇</string>
     <string name="settings_clear_grid_working_card_background">清除卡片背景圖片</string>
-    <string name="settings_clear_grid_working_card_background_confirm">確定要清除卡片背景圖片嗎？</string>
+    <string name="settings_clear_grid_working_card_background_confirm">確認清除卡片背景圖片？</string>
     <string name="settings_grid_working_card_background_saved">卡片背景圖片儲存成功</string>
     <string name="settings_grid_working_card_background_error">卡片背景圖片儲存失敗</string>
     <string name="settings_grid_working_card_background_cleared">卡片背景圖片已清除</string>
@@ -673,7 +673,7 @@
     <string name="home_storage_swap">交換檔案</string>
     <string name="home_info_kernel">核心</string>
     <string name="home_info_superkey">超級密鑰</string>
-    <string name="home_info_auth_auth">已認證</string>
+    <string name="home_info_auth_auth">已驗證</string>
     <string name="home_info_auth_na">不可用</string>
     <string name="home_info_device_slot">裝置插槽</string>
     <string name="home_info_device_model">裝置型號</string>
@@ -708,7 +708,7 @@
     <string name="settings_sound_effect_selected">已選擇音效檔案</string>
     <string name="settings_sound_effect_scope">生效範圍</string>
     <string name="settings_sound_effect_scope_global">全域（任何位置）</string>
-    <string name="settings_sound_effect_scope_bottom_bar">僅底欄</string>
+    <string name="settings_sound_effect_scope_bottom_bar">僅導航列</string>
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">確定要清除音效嗎？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
@@ -716,7 +716,7 @@
     <!-- Backup Settings -->
     <string name="settings_category_backup">備份</string>
     <string name="settings_enable_cloud_backup">啟用雲端備份</string>
-    <string name="settings_enable_cloud_backup_summary">自動備份已刷入的模組到雲端服務</string>
+    <string name="settings_enable_cloud_backup_summary">自動備份已安裝的模組到雲端服務</string>
     <string name="settings_configure_webdav">設定 WebDAV 服務</string>
     <string name="webdav_config_title">WebDAV 設定</string>
     <string name="webdav_url">WebDAV 網址</string>
