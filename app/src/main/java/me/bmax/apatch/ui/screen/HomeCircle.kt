@@ -191,9 +191,19 @@ fun StatusCardCircle(
     val isUpdate = kpState == APApplication.State.KERNELPATCH_NEED_UPDATE || kpState == APApplication.State.KERNELPATCH_NEED_REBOOT
     val classicEmojiEnabled = BackgroundConfig.isListWorkingCardModeHidden
     
-    val containerColor = if (isWorking) MaterialTheme.colorScheme.primaryContainer else MaterialTheme.colorScheme.errorContainer
-
-    val finalContainerColor = if (isWorking) MaterialTheme.colorScheme.secondaryContainer else MaterialTheme.colorScheme.errorContainer
+    val finalContainerColor = if (isWorking) {
+        if (BackgroundConfig.isCustomBackgroundEnabled) {
+            MaterialTheme.colorScheme.primaryContainer.copy(alpha = BackgroundConfig.customBackgroundOpacity)
+        } else {
+            MaterialTheme.colorScheme.secondaryContainer
+        }
+    } else {
+        if (BackgroundConfig.isCustomBackgroundEnabled) {
+            MaterialTheme.colorScheme.errorContainer.copy(alpha = BackgroundConfig.customBackgroundOpacity)
+        } else {
+            MaterialTheme.colorScheme.errorContainer
+        }
+    }
     
     TonalCard(containerColor = finalContainerColor) {
         Row(
@@ -593,13 +603,19 @@ fun AStatusCardCircle(apState: APApplication.State) {
 @Composable
 fun TonalCard(
     modifier: Modifier = Modifier,
-    containerColor: Color = MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp),
+    containerColor: Color? = null,
     shape: Shape = RoundedCornerShape(20.dp),
     content: @Composable () -> Unit
 ) {
+    val finalContainerColor = containerColor ?: if (BackgroundConfig.isCustomBackgroundEnabled) {
+        MaterialTheme.colorScheme.surface.copy(alpha = BackgroundConfig.customBackgroundOpacity)
+    } else {
+        MaterialTheme.colorScheme.surfaceColorAtElevation(1.dp)
+    }
+    
     Card(
         modifier = modifier,
-        colors = CardDefaults.cardColors(containerColor = containerColor),
+        colors = CardDefaults.cardColors(containerColor = finalContainerColor),
         shape = shape
     ) {
         content()
