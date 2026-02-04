@@ -54,6 +54,16 @@
   <string name="su_batch_exclude_content">すべての非 root アプリのインジェクションを除外するには、アクションを選択してください</string>
   <string name="su_exclude_btn">除外</string>
   <string name="su_exclude_reverse_btn">反転</string>
+
+  <!-- SuperUser App Action Dialog -->
+  <string name="su_app_action_title">アプリの操作</string>
+  <string name="su_app_action_content">アプリに実行するアクションを選択してください</string>
+  <string name="su_app_action_launch">アプリを起動</string>
+  <string name="su_app_action_force_stop">強制停止</string>
+  <string name="su_app_action_launch_success">%s を起動中</string>
+  <string name="su_app_action_force_stop_success">%s を強制停止しました</string>
+  <string name="su_app_action_failed">操作に失敗しました: %s</string>
+
   <string name="home_learn_apatch">APatch について学習する</string>
   <string name="home_click_to_learn_apatch">APatch の機能と使用方法について学習します</string>
   <string name="settings_hide_apatch_card">APatch について学習するを非表示</string>

@@ -66,6 +66,15 @@
     <string name="su_exclude_btn">Excluir</string>
     <string name="su_exclude_reverse_btn">Invertir</string>
 
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Acción de Aplicación</string>
+    <string name="su_app_action_content">Por favor selecciona una acción para la aplicación</string>
+    <string name="su_app_action_launch">Iniciar Aplicación</string>
+    <string name="su_app_action_force_stop">Forzar Detención</string>
+    <string name="su_app_action_launch_success">Iniciando %s</string>
+    <string name="su_app_action_force_stop_success">%s detenida forzosamente</string>
+    <string name="su_app_action_failed">Operación fallida: %s</string>
+
     <string name="home_learn_apatch">Aprender FolkPatch</string>
     <string name="home_click_to_learn_apatch">Aprende sobre las características de FolkPatch y cómo usarlo</string>
     <string name="settings_hide_apatch_card">Ocultar tarjeta Aprender FolkPatch</string>

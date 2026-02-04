@@ -66,6 +66,15 @@
     <string name="su_exclude_btn">استثناء</string>
     <string name="su_exclude_reverse_btn">عكس</string>
 
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">إجراء التطبيق</string>
+    <string name="su_app_action_content">يرجى تحديد إجراء للتطبيق</string>
+    <string name="su_app_action_launch">تشغيل التطبيق</string>
+    <string name="su_app_action_force_stop">إيقاف إجباري</string>
+    <string name="su_app_action_launch_success">جارٍ تشغيل %s</string>
+    <string name="su_app_action_force_stop_success">تم إيقاف %s إجبارياً</string>
+    <string name="su_app_action_failed">فشلت العملية: %s</string>
+
     <string name="home_learn_apatch">تعلم FolkPatch</string>
     <string name="home_click_to_learn_apatch">تعرف على ميزات FolkPatch وكيفية استخدامه</string>
     <string name="settings_hide_apatch_card">إخفاء بطاقة تعلم FolkPatch</string>

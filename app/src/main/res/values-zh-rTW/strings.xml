@@ -171,6 +171,16 @@
     <string name="su_batch_exclude_content">為全部非 Root 權限應用程式排除注入，請選擇一個操作</string>
     <string name="su_exclude_btn">排除</string>
     <string name="su_exclude_reverse_btn">反排除</string>
+
+    <!-- 超級使用者應用程式操作對話框 -->
+    <string name="su_app_action_title">應用程式操作</string>
+    <string name="su_app_action_content">請選擇一個操作來對應用程式執行</string>
+    <string name="su_app_action_launch">啟動應用程式</string>
+    <string name="su_app_action_force_stop">強行停止</string>
+    <string name="su_app_action_launch_success">正在啟動 %s</string>
+    <string name="su_app_action_force_stop_success">已強行停止 %s</string>
+    <string name="su_app_action_failed">操作失敗: %s</string>
+
     <string name="su_show_system_apps">顯示系統應用程式</string>
     <string name="su_hide_system_apps">隱藏系統應用程式</string>
     <string name="su_refresh">重新整理</string>

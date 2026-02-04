@@ -180,6 +180,16 @@
     <string name="su_batch_exclude_content">给所有没ROOT权限的软件排除注入，选一个嘛喵</string>
     <string name="su_exclude_btn">排除掉喵！</string>
     <string name="su_exclude_reverse_btn">反过来嘛喵！</string>
+
+    <!-- 超级用户应用操作弹窗 -->
+    <string name="su_app_action_title">应用操作喵</string>
+    <string name="su_app_action_content">请选择一个动作来对应用执行喵</string>
+    <string name="su_app_action_launch">启动应用喵</string>
+    <string name="su_app_action_force_stop">强行停止喵</string>
+    <string name="su_app_action_launch_success">正在启动 %s 喵</string>
+    <string name="su_app_action_force_stop_success">已经强行停止 %s 了喵</string>
+    <string name="su_app_action_failed">操作失败了喵: %s</string>
+
     <string name="su_pkg_excluded_setting_title">改排除设置喵</string>
     <string name="su_pkg_excluded_setting_summary">开这个，FolkPatch就能恢复这应用改过的文件哒喵！</string>
     <string name="su_pkg_root_setting_title">超级用户喵</string>

@@ -165,6 +165,16 @@
     <string name="su_batch_exclude_content">为全部非魔法使施加免疫咒语,请选择一个魔法</string>
     <string name="su_exclude_btn">施加免疫</string>
     <string name="su_exclude_reverse_btn">解除免疫</string>
+
+    <!-- 超级用户应用操作弹窗 -->
+    <string name="su_app_action_title">魔法操作</string>
+    <string name="su_app_action_content">请选择一个魔法来对应用施放</string>
+    <string name="su_app_action_launch">召唤应用</string>
+    <string name="su_app_action_force_stop">封印应用</string>
+    <string name="su_app_action_launch_success">正在召唤 %s</string>
+    <string name="su_app_action_force_stop_success">已封印 %s</string>
+    <string name="su_app_action_failed">魔法失效: %s</string>
+
     <string name="su_pkg_excluded_setting_title">免疫设置</string>
     <string name="su_pkg_excluded_setting_summary">启用此选项将允许魔法工坊恢复此应用所受的魔法影响。</string>
     <string name="su_pkg_root_setting_title">魔法使</string>

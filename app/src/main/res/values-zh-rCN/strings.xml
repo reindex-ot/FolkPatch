@@ -689,6 +689,15 @@
     <string name="su_restore_list">还原列表</string>
     <string name="backup_success">备份成功</string>
     <string name="restore_success">还原成功</string>
+
+    <!-- 超级用户应用操作弹窗 -->
+    <string name="su_app_action_title">应用操作</string>
+    <string name="su_app_action_content">请选择一个操作来对应用执行</string>
+    <string name="su_app_action_launch">启动应用</string>
+    <string name="su_app_action_force_stop">强行停止</string>
+    <string name="su_app_action_launch_success">正在启动 %s</string>
+    <string name="su_app_action_force_stop_success">已强行停止 %s</string>
+    <string name="su_app_action_failed">操作失败: %s</string>
     <string name="patch_output_written_to"> 修补成功，文件输出到 </string>
     <string name="patch_write_failed"> 修补失败，发生了致命错误</string>
 

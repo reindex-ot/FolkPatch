@@ -177,6 +177,16 @@
     <string name="su_batch_exclude_content">Kecualikan injeksi untuk semua aplikasi non-Root, pilih tindakan</string>
     <string name="su_exclude_btn">Kecualikan</string>
     <string name="su_exclude_reverse_btn">Balikkan</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Tindakan Aplikasi</string>
+    <string name="su_app_action_content">Silakan pilih tindakan untuk aplikasi</string>
+    <string name="su_app_action_launch">Jalankan Aplikasi</string>
+    <string name="su_app_action_force_stop">Hentikan Paksa</string>
+    <string name="su_app_action_launch_success">Memulai %s</string>
+    <string name="su_app_action_force_stop_success">%s dihentikan paksa</string>
+    <string name="su_app_action_failed">Operasi gagal: %s</string>
+
     <string name="su_show_system_apps">Tampilkan aplikasi sistem</string>
     <string name="su_hide_system_apps">Sembunyikan aplikasi sistem</string>
     <string name="su_refresh">Segarkan</string>

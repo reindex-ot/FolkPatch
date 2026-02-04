@@ -163,6 +163,16 @@
     <string name="su_batch_exclude_content">为诸无登仙权之凡器摒除仙符注入，道友宜择一渡劫之措</string>
     <string name="su_exclude_btn">摒除仙籍</string>
     <string name="su_exclude_reverse_btn">反摒仙籍</string>
+
+    <!-- 超级用户应用操作弹窗 -->
+    <string name="su_app_action_title">法器仙术</string>
+    <string name="su_app_action_content">请择一仙术来对法器施之</string>
+    <string name="su_app_action_launch">唤出法器</string>
+    <string name="su_app_action_force_stop">封禁法器</string>
+    <string name="su_app_action_launch_success">正在唤出法器 %s</string>
+    <string name="su_app_action_force_stop_success">已封禁法器 %s</string>
+    <string name="su_app_action_failed">渡劫败陨: %s</string>
+
     <string name="su_pkg_excluded_setting_title">改仙籍摒除之令</string>
     <string name="su_pkg_excluded_setting_summary">启此仙令，许FolkPatch仙法复此凡器仙符所改之诸天道文卷。</string>
     <string name="su_pkg_root_setting_title">登仙至尊</string>

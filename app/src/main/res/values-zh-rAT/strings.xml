@@ -164,6 +164,16 @@
     <string name="su_batch_exclude_content">为全部非圣光使者施加圣光护佑,请选择一项神力</string>
     <string name="su_exclude_btn">施加圣佑</string>
     <string name="su_exclude_reverse_btn">解除圣佑</string>
+
+    <!-- 超级用户应用操作弹窗 -->
+    <string name="su_app_action_title">圣器操作</string>
+    <string name="su_app_action_content">请选择一个神力来对圣器执行</string>
+    <string name="su_app_action_launch">降临圣器</string>
+    <string name="su_app_action_force_stop">圣罚止息</string>
+    <string name="su_app_action_launch_success">正在降临圣器 %s</string>
+    <string name="su_app_action_force_stop_success">已圣罚止息 %s</string>
+    <string name="su_app_action_failed">神恩未至: %s</string>
+
     <string name="su_pkg_excluded_setting_title">圣佑设置</string>
     <string name="su_pkg_excluded_setting_summary">启用此选项将允许圣光工坊恢复此应用所受的神力影响。</string>
     <string name="su_pkg_root_setting_title">圣光使者</string>

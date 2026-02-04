@@ -4,6 +4,7 @@ import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
+import androidx.compose.foundation.combinedClickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -96,6 +97,8 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
     }
 
     var showBatchExcludeDialog by remember { mutableStateOf(false) }
+    var showAppActionDialog by remember { mutableStateOf(false) }
+    var selectedApp by remember { mutableStateOf<SuperUserViewModel.AppInfo?>(null) }
 
     if (showBatchExcludeDialog) {
         BatchExcludeDialog(
@@ -107,6 +110,56 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
             onReverseExclude = {
                 viewModel.reverseExcludeAll()
                 showBatchExcludeDialog = false
+            }
+        )
+    }
+
+    if (showAppActionDialog && selectedApp != null) {
+        AppActionDialog(
+            app = selectedApp!!,
+            onDismiss = { showAppActionDialog = false },
+            onLaunch = {
+                val success = viewModel.launchApp(context, selectedApp!!.packageName)
+                if (success) {
+                    scope.launch {
+                        // Show toast for launch success
+                        android.widget.Toast.makeText(
+                            context,
+                            context.getString(R.string.su_app_action_launch_success, selectedApp!!.label),
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    scope.launch {
+                        android.widget.Toast.makeText(
+                            context,
+                            context.getString(R.string.su_app_action_failed, selectedApp!!.label),
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                showAppActionDialog = false
+            },
+            onForceStop = {
+                val success = viewModel.forceStopApp(selectedApp!!.packageName)
+                if (success) {
+                    scope.launch {
+                        android.widget.Toast.makeText(
+                            context,
+                            context.getString(R.string.su_app_action_force_stop_success, selectedApp!!.label),
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                } else {
+                    scope.launch {
+                        android.widget.Toast.makeText(
+                            context,
+                            context.getString(R.string.su_app_action_failed, selectedApp!!.label),
+                            android.widget.Toast.LENGTH_SHORT
+                        ).show()
+                    }
+                }
+                showAppActionDialog = false
             }
         )
     }
@@ -206,10 +259,17 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
         ) {
             LazyColumn(Modifier.fillMaxSize()) {
                 items(viewModel.appList.filter { it.packageName != apApp.packageName }, key = { it.packageName + it.uid }) { app ->
-                    AppItem(app) {
-                        navigator.navigate(AppProfileScreenDestination(app.packageName, app.uid))
-                        viewModel.search = ""
-                    }
+                    AppItem(
+                        app = app,
+                        onClick = {
+                            navigator.navigate(AppProfileScreenDestination(app.packageName, app.uid))
+                            viewModel.search = ""
+                        },
+                        onLongClick = {
+                            selectedApp = app
+                            showAppActionDialog = true
+                        }
+                    )
                 }
             }
         }
@@ -221,13 +281,17 @@ fun SuperUserScreen(navigator: DestinationsNavigator) {
 private fun AppItem(
     app: SuperUserViewModel.AppInfo,
     onClick: () -> Unit,
+    onLongClick: () -> Unit,
 ) {
     val config = app.config
     val rootGranted = config.allow != 0
     val excludeApp = config.exclude == 1
 
     ListItem(
-        modifier = Modifier.clickable(onClick = onClick),
+        modifier = Modifier.combinedClickable(
+            onClick = onClick,
+            onLongClick = onLongClick
+        ),
         colors = ListItemDefaults.colors(containerColor = Color.Transparent),
         headlineContent = { Text(app.label) },
         leadingContent = {
@@ -344,6 +408,78 @@ fun BatchExcludeDialog(
                     }
                     TextButton(onClick = onReverseExclude) {
                         Text(text = reverseText)
+                    }
+                }
+            }
+            val dialogWindowProvider = LocalView.current.parent as DialogWindowProvider
+            setupWindowBlurListener(dialogWindowProvider.window)
+        }
+    }
+}
+
+@OptIn(ExperimentalMaterial3Api::class)
+@Composable
+fun AppActionDialog(
+    app: SuperUserViewModel.AppInfo,
+    onDismiss: () -> Unit,
+    onLaunch: () -> Unit,
+    onForceStop: () -> Unit
+) {
+    val title = stringResource(R.string.su_app_action_title)
+    val content = stringResource(R.string.su_app_action_content)
+    val launchText = stringResource(R.string.su_app_action_launch)
+    val forceStopText = stringResource(R.string.su_app_action_force_stop)
+    val cancelText = stringResource(android.R.string.cancel)
+
+    BasicAlertDialog(
+        onDismissRequest = onDismiss,
+        properties = DialogProperties(
+            decorFitsSystemWindows = true,
+            usePlatformDefaultWidth = false,
+            securePolicy = SecureFlagPolicy.SecureOff,
+            dismissOnClickOutside = true
+        )
+    ) {
+        Surface(
+            modifier = Modifier
+                .width(320.dp)
+                .wrapContentHeight(),
+            shape = RoundedCornerShape(20.dp),
+            tonalElevation = AlertDialogDefaults.TonalElevation,
+            color = AlertDialogDefaults.containerColor,
+        ) {
+            Column(modifier = Modifier.padding(PaddingValues(all = 24.dp))) {
+                Box(
+                    Modifier
+                        .padding(PaddingValues(bottom = 16.dp))
+                        .align(Alignment.Start)
+                ) {
+                    Text(text = title, style = MaterialTheme.typography.headlineSmall)
+                }
+                Box(
+                    Modifier
+                        .weight(weight = 1f, fill = false)
+                        .padding(PaddingValues(bottom = 24.dp))
+                        .align(Alignment.Start)
+                ) {
+                    Text(
+                        text = content,
+                        style = MaterialTheme.typography.bodyMedium,
+                        color = MaterialTheme.colorScheme.onSurfaceVariant
+                    )
+                }
+                Row(
+                    modifier = Modifier.fillMaxWidth(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    TextButton(onClick = onDismiss) {
+                        Text(text = cancelText)
+                    }
+                    TextButton(onClick = onLaunch) {
+                        Text(text = launchText)
+                    }
+                    TextButton(onClick = onForceStop) {
+                        Text(text = forceStopText)
                     }
                 }
             }

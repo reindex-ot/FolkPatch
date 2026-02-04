@@ -176,6 +176,16 @@
     <string name="su_batch_exclude_content">Wyklucz wstrzykiwanie dla wszystkich aplikacji bez roota, wybierz działanie</string>
     <string name="su_exclude_btn">Wyklucz</string>
     <string name="su_exclude_reverse_btn">Odwróć</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Działanie aplikacji</string>
+    <string name="su_app_action_content">Wybierz działanie do wykonania na aplikacji</string>
+    <string name="su_app_action_launch">Uruchom aplikację</string>
+    <string name="su_app_action_force_stop">Wymuś zatrzymanie</string>
+    <string name="su_app_action_launch_success">Uruchamianie %s</string>
+    <string name="su_app_action_force_stop_success">Wymuszono zatrzymanie %s</string>
+    <string name="su_app_action_failed">Operacja nie powiodła się: %s</string>
+
     <string name="su_show_system_apps">Pokaż aplikacje systemowe</string>
     <string name="su_hide_system_apps">Ukryj aplikacje systemowe</string>
     <string name="su_refresh">Odśwież</string>

@@ -165,6 +165,16 @@
     <string name="su_batch_exclude_content">Loại trừ chèn cho tất cả phần mềm không có quyền ROOT, vui lòng chọn một hành động</string>
     <string name="su_exclude_btn">Loại trừ</string>
     <string name="su_exclude_reverse_btn">Loại trừ ngược</string>
+
+    <!-- SuperUser App Action Dialog -->
+    <string name="su_app_action_title">Thao tác ứng dụng</string>
+    <string name="su_app_action_content">Vui lòng chọn một hành động để thực hiện trên ứng dụng</string>
+    <string name="su_app_action_launch">Khởi chạy ứng dụng</string>
+    <string name="su_app_action_force_stop">Buộc dừng</string>
+    <string name="su_app_action_launch_success">Đang khởi chạy %s</string>
+    <string name="su_app_action_force_stop_success">Đã buộc dừng %s</string>
+    <string name="su_app_action_failed">Thao tác thất bại: %s</string>
+
     <string name="su_pkg_excluded_setting_title">Chỉnh sửa loại trừ</string>
     <string name="su_pkg_excluded_setting_summary">Bật tùy chọn này sẽ cho phép FolkPatch khôi phục mọi tệp đã được module ứng dụng này sửa đổi。</string>
     <string name="su_pkg_root_setting_title">Superuser</string>
