@@ -157,6 +157,7 @@ import java.text.SimpleDateFormat
 import java.util.Date
 import java.util.Locale
 import java.util.Properties
+import java.io.File
 
 import me.bmax.apatch.util.BiometricUtils
 
@@ -960,6 +961,19 @@ private fun ModuleLabel(
 }
 
 private const val FOLK_BANNER_FILE_NAME = "FolkBanner"
+private const val FOLK_BANNER_DIR_NAME = "folk_banners"
+
+private fun sanitizeBannerKey(raw: String): String {
+    return raw.replace(Regex("[^a-zA-Z0-9._-]"), "_")
+}
+
+private fun getFolkBannerFile(context: Context, moduleId: String): File {
+    val dir = File(context.filesDir, FOLK_BANNER_DIR_NAME)
+    if (!dir.exists()) {
+        dir.mkdirs()
+    }
+    return File(dir, sanitizeBannerKey(moduleId))
+}
 
 private fun resolveModuleDir(rootShell: Shell, moduleId: String): String {
     val suFile = { path: String ->
@@ -989,11 +1003,11 @@ private fun resolveModuleDir(rootShell: Shell, moduleId: String): String {
     }.getOrDefault(defaultDir)
 }
 
-private fun readFolkBanner(rootShell: Shell, resolvedDir: String): ByteArray? {
+private fun readFolkBanner(context: Context, moduleId: String): ByteArray? {
     return runCatching {
-        val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
+        val file = getFolkBannerFile(context, moduleId)
         if (file.exists()) {
-            file.newInputStream().use { it.readBytes() }.takeIf { it.isNotEmpty() }
+            file.readBytes().takeIf { it.isNotEmpty() }
         } else {
             null
         }
@@ -1015,21 +1029,21 @@ private fun readModulePropBanner(rootShell: Shell, resolvedDir: String): String?
 
 private fun writeFolkBanner(
     context: Context,
-    rootShell: Shell,
-    resolvedDir: String,
+    moduleId: String,
     uri: Uri
 ): ByteArray? {
     val data = context.contentResolver.openInputStream(uri)?.use { it.readBytes() } ?: return null
-    val dir = SuFile(resolvedDir).apply { shell = rootShell }
-    if (!dir.exists()) {
-        dir.mkdirs()
-    }
-    val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
-    file.newOutputStream().use { it.write(data) }
+    val file = getFolkBannerFile(context, moduleId)
+    file.outputStream().use { it.write(data) }
     return data
 }
 
-private fun clearFolkBanner(rootShell: Shell, resolvedDir: String): Boolean {
+private fun clearFolkBanner(context: Context, moduleId: String): Boolean {
+    val file = getFolkBannerFile(context, moduleId)
+    return !file.exists() || file.delete()
+}
+
+private fun clearLegacyFolkBanner(rootShell: Shell, resolvedDir: String): Boolean {
     val file = SuFile("$resolvedDir/$FOLK_BANNER_FILE_NAME").apply { shell = rootShell }
     return !file.exists() || file.delete()
 }
@@ -1077,9 +1091,15 @@ private fun ModuleItem(
                 loadingDialog.show()
                 val result = withContext(Dispatchers.IO) {
                     runCatching {
-                        val rootShell = getRootShell(true)
-                        val resolvedDir = resolveModuleDir(rootShell, module.id)
-                        writeFolkBanner(context, rootShell, resolvedDir, it)
+                        val data = writeFolkBanner(context, module.id, it)
+                        if (data != null) {
+                            runCatching {
+                                val rootShell = getRootShell(true)
+                                val resolvedDir = resolveModuleDir(rootShell, module.id)
+                                clearLegacyFolkBanner(rootShell, resolvedDir)
+                            }
+                        }
+                        data
                     }.getOrNull()
                 }
                 loadingDialog.hide()
@@ -1148,15 +1168,15 @@ private fun ModuleItem(
 
         val loaded = withContext(Dispatchers.IO) {
             try {
+                val folkBanner = if (BackgroundConfig.isFolkBannerEnabled) readFolkBanner(context, module.id) else null
+                if (folkBanner != null) {
+                    return@withContext APModuleViewModel.BannerInfo(folkBanner, null)
+                }
                 val rootShell = getRootShell(true)
                 val suFile = { path: String ->
                     SuFile(path).apply { shell = rootShell }
                 }
                 val resolvedDir = resolveModuleDir(rootShell, module.id)
-                val folkBanner = if (BackgroundConfig.isFolkBannerEnabled) readFolkBanner(rootShell, resolvedDir) else null
-                if (folkBanner != null) {
-                    return@withContext APModuleViewModel.BannerInfo(folkBanner, null)
-                }
                 val propBanner = readModulePropBanner(rootShell, resolvedDir)
 
                 if (!propBanner.isNullOrEmpty() && propBanner.startsWith("http", true)) {
@@ -1556,9 +1576,13 @@ private fun ModuleItem(
                                 loadingDialog.show()
                                 val success = withContext(Dispatchers.IO) {
                                     runCatching {
-                                        val rootShell = getRootShell(true)
-                                        val resolvedDir = resolveModuleDir(rootShell, module.id)
-                                        clearFolkBanner(rootShell, resolvedDir)
+                                        val localCleared = clearFolkBanner(context, module.id)
+                                        val legacyCleared = runCatching {
+                                            val rootShell = getRootShell(true)
+                                            val resolvedDir = resolveModuleDir(rootShell, module.id)
+                                            clearLegacyFolkBanner(rootShell, resolvedDir)
+                                        }.getOrDefault(false)
+                                        localCleared || legacyCleared
                                     }.getOrDefault(false)
                                 }
                                 loadingDialog.hide()
