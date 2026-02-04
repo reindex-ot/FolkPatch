@@ -477,6 +477,7 @@ object BackgroundConfig {
         isGridWorkingCardModeHidden = gridModeHidden
 
         isListWorkingCardModeHidden = listModeHidden
+        customBadgeTextMode = badgeTextMode
 
         isBannerEnabled = bannerEnabled
         isFolkBannerEnabled = folkBannerEnabled
