@@ -345,7 +345,10 @@ fun GeneralSettings(
                     summary = stringResource(id = R.string.alt_icon_summary),
                     checked = useAltIcon.value,
                     onCheckedChange = {
-                        prefs.edit { putBoolean("use_alt_icon", it) }
+                        prefs.edit {
+                            putBoolean("use_alt_icon", it)
+                            putString("desktop_app_name", if (it) "FolkSU" else "FolkPatch")
+                        }
                         LauncherIconUtils.toggleLauncherIcon(context, it)
                         useAltIcon.value = it
                     }
@@ -783,7 +786,10 @@ fun DesktopAppNameChooseDialog(showDialog: MutableState<Boolean>) {
                         headlineContent = { Text(text = "FolkPatch") },
                         modifier = Modifier.clickable {
                             showDialog.value = false
-                            prefs.edit { putString("desktop_app_name", "FolkPatch") }
+                            prefs.edit {
+                                putString("desktop_app_name", "FolkPatch")
+                                putBoolean("use_alt_icon", false)
+                            }
                             me.bmax.apatch.util.LauncherIconUtils.applySaved(context)
                         },
                         trailingContent = {
@@ -798,7 +804,10 @@ fun DesktopAppNameChooseDialog(showDialog: MutableState<Boolean>) {
                         headlineContent = { Text(text = "FolkSU") },
                         modifier = Modifier.clickable {
                             showDialog.value = false
-                            prefs.edit { putString("desktop_app_name", "FolkSU") }
+                            prefs.edit {
+                                putString("desktop_app_name", "FolkSU")
+                                putBoolean("use_alt_icon", true)
+                            }
                             me.bmax.apatch.util.LauncherIconUtils.applySaved(context)
                         },
                         trailingContent = {
