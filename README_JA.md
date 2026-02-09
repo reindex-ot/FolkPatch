@@ -43,7 +43,7 @@
 
 ## ライセンス
 
-FolkPatch is open source under the GNU General Public License v3 [GPL-3](http://www.gnu.org/copyleft/gpl.html).
+FolkPatch は [GNU General Public License v3 (GPL-3)](http://www.gnu.org/copyleft/gpl.html) に基づいています。
 
 ## FolkPatch ディスカッションとコミュニケーション
 
