@@ -9,7 +9,7 @@
 
 </div>
 
-**Language / 语言:** [中文](README.md) | [English](README_EN.md)
+**Language / 语言:** [中文](README.md) | [English](README_EN.md) | [日本語](README_JA.md)
 
 **FolkPatch** is an extended non-parallel branch developed based on [APatch](https://github.com/bmax121/APatch), which only optimizes interface design and extends features without introducing new core functionalities.
 
