@@ -189,10 +189,13 @@
     <string name="apm_failed_to_disable">禁仙符败陨：%s</string>
     <string name="apm_empty">未凝炼仙符入体</string>
     <string name="apm_remove">祛符出体</string>
+    <string name="apm_undo">撤销</string>
     <string name="apm_install">凝符入体</string>
     <string name="apm_uninstall_confirm">欲废去%s天道仙符？</string>
     <string name="apm_uninstall_success">%s仙符已废</string>
     <string name="apm_uninstall_failed">废符败陨：%s</string>
+    <string name="apm_undo_uninstall_success">%s已恢复契约</string>
+    <string name="apm_undo_uninstall_failed">恢复契约失败: %s</string>
     <string name="apm_version">符篆篇次</string>
     <string name="apm_author">符祖</string>
     <string name="apm_desc">符篆玄义</string>

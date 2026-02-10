@@ -206,10 +206,13 @@
     <string name="apm_failed_to_disable">关模块失败了喵：%s</string>
     <string name="apm_empty">没装模块喵，这里空空的</string>
     <string name="apm_remove">删掉喵！</string>
+    <string name="apm_undo">恢复喵！</string>
     <string name="apm_install">安装喵！</string>
     <string name="apm_uninstall_confirm">要把%s模块卸了嘛喵？不要后悔哦</string>
     <string name="apm_uninstall_success">%s 卸掉了喵！</string>
     <string name="apm_uninstall_failed">卸载失败了喵：%s</string>
+    <string name="apm_undo_uninstall_success">%s恢复成功了喵</string>
+    <string name="apm_undo_uninstall_failed">恢复失败了喵：%s</string>
     <string name="apm_version">版本哒</string>
     <string name="apm_author">作者哒</string>
     <string name="apm_desc">描述哒</string>

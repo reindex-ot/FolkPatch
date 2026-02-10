@@ -210,10 +210,13 @@
     <string name="apm_failed_to_disable">فشل تعطيل الوحدة: %s</string>
     <string name="apm_empty">لا توجد وحدات مثبتة</string>
     <string name="apm_remove">إزالة</string>
+    <string name="apm_undo">تراجع</string>
     <string name="apm_install">تثبيت</string>
     <string name="apm_uninstall_confirm">إلغاء تثبيت وحدة %s؟</string>
     <string name="apm_uninstall_success">تم إلغاء تثبيت %s</string>
     <string name="apm_uninstall_failed">فشل إلغاء التثبيت: %s</string>
+    <string name="apm_undo_uninstall_success">تم استعادة %s بنجاح</string>
+    <string name="apm_undo_uninstall_failed">فشل الاستعادة: %s</string>
     <string name="apm_version">الإصدار</string>
     <string name="apm_author">المؤلف</string>
     <string name="apm_desc">الوصف</string>

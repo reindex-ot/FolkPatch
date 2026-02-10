@@ -191,10 +191,13 @@
     <string name="apm_failed_to_disable">Không thể vô hiệu hóa module: %s</string>
     <string name="apm_empty">Chưa cài đặt module</string>
     <string name="apm_remove">Xóa</string>
+    <string name="apm_undo">Hoàn tác</string>
     <string name="apm_install">Cài đặt</string>
     <string name="apm_uninstall_confirm">Bạn có muốn gỡ cài đặt module %s không?</string>
     <string name="apm_uninstall_success">%s đã được gỡ cài đặt</string>
     <string name="apm_uninstall_failed">Gỡ cài đặt thất bại: %s</string>
+    <string name="apm_undo_uninstall_success">Đã khôi phục %s</string>
+    <string name="apm_undo_uninstall_failed">Khôi phục thất bại: %s</string>
     <string name="apm_version">Phiên bản</string>
     <string name="apm_author">Tác giả</string>
     <string name="apm_desc">Mô tả</string>

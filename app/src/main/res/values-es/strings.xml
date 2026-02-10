@@ -210,10 +210,13 @@
     <string name="apm_failed_to_disable">Error al deshabilitar módulo: %s</string>
     <string name="apm_empty">Ningún módulo instalado</string>
     <string name="apm_remove">Eliminar</string>
+    <string name="apm_undo">Deshacer</string>
     <string name="apm_install">Instalar</string>
     <string name="apm_uninstall_confirm">¿Desinstalar el módulo %s?</string>
     <string name="apm_uninstall_success">%s desinstalado</string>
     <string name="apm_uninstall_failed">Error al desinstalar: %s</string>
+    <string name="apm_undo_uninstall_success">%s restaurado correctamente</string>
+    <string name="apm_undo_uninstall_failed">Error al restaurar: %s</string>
     <string name="apm_version">Versión</string>
     <string name="apm_author">Autor</string>
     <string name="apm_desc">Desc</string>

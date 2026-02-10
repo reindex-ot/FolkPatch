@@ -197,10 +197,13 @@
     <string name="apm_failed_to_disable">Gagal menonaktifkan modul: %s</string>
     <string name="apm_empty">Tidak ada modul yang terinstal</string>
     <string name="apm_remove">Hapus</string>
+    <string name="apm_undo">Urungkan</string>
     <string name="apm_install">Instal</string>
     <string name="apm_uninstall_confirm">Hapus instalasi modul %s?</string>
     <string name="apm_uninstall_success">%s dihapus</string>
     <string name="apm_uninstall_failed">Gagal menghapus instalasi: %s</string>
+    <string name="apm_undo_uninstall_success">%s berhasil dipulihkan</string>
+    <string name="apm_undo_uninstall_failed">Gagal memulihkan: %s</string>
     <string name="apm_version">Versi</string>
     <string name="apm_author">Penulis</string>
     <string name="apm_desc">Deskripsi</string>

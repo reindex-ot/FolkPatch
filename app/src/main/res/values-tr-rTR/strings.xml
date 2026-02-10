@@ -201,10 +201,13 @@
     <string name="apm_failed_to_disable">Modül devre dışı bırakılamadı: %s</string>
     <string name="apm_empty">Yüklü modül yok</string>
     <string name="apm_remove">Kaldır</string>
+    <string name="apm_undo">Geri al</string>
     <string name="apm_install">Kur</string>
     <string name="apm_uninstall_confirm">%s modülü kaldırılsın mı?</string>
     <string name="apm_uninstall_success">%s kaldırıldı</string>
     <string name="apm_uninstall_failed">Kaldırılamadı: %s</string>
+    <string name="apm_undo_uninstall_success">%s geri yüklendi</string>
+    <string name="apm_undo_uninstall_failed">Geri yükleme başarısız: %s</string>
     <string name="apm_version">Sürüm</string>
     <string name="apm_author">Yazar</string>
     <string name="apm_desc">Açıklama</string>

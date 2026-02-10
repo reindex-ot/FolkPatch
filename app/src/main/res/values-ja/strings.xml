@@ -167,10 +167,13 @@
     <string name="apm_failed_to_disable">モジュールの無効化に失敗: %s</string>
     <string name="apm_empty">モジュールはインストールされていません</string>
     <string name="apm_remove">削除</string>
+    <string name="apm_undo">元に戻す</string>
     <string name="apm_install">インストール</string>
     <string name="apm_uninstall_confirm">「%s」のモジュールをアンインストールしますか？</string>
     <string name="apm_uninstall_success">「%s」はアンインストールされました</string>
     <string name="apm_uninstall_failed">アンインストールに失敗: %s</string>
+    <string name="apm_undo_uninstall_success">%s を復元しました</string>
+    <string name="apm_undo_uninstall_failed">復元に失敗: %s</string>
     <string name="apm_version">バージョン</string>
     <string name="apm_author">作者</string>
     <string name="apm_desc">説明</string>

@@ -195,6 +195,9 @@
     <string name="apm_uninstall_confirm">確定要解除安裝 \"%s\" 模組？</string>
     <string name="apm_uninstall_success">%s 已解除安裝</string>
     <string name="apm_uninstall_failed">無法解除安裝 %s</string>
+    <string name="apm_undo">復原</string>
+    <string name="apm_undo_uninstall_success">%s 已復原</string>
+    <string name="apm_undo_uninstall_failed">復原失敗: %s</string>
     <string name="apm_version">版本</string>
     <string name="apm_author">作者</string>
     <string name="apm_desc">說明</string>

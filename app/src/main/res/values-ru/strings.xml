@@ -197,10 +197,13 @@
     <string name="apm_failed_to_disable">Не удалось отключить модуль: %s</string>
     <string name="apm_empty">Нет установленных модулей</string>
     <string name="apm_remove">Удалить</string>
+    <string name="apm_undo">Отменить</string>
     <string name="apm_install">Установить</string>
     <string name="apm_uninstall_confirm">Удалить модуль %s?</string>
     <string name="apm_uninstall_success">%s удалён</string>
     <string name="apm_uninstall_failed">Не удалось удалить: %s</string>
+    <string name="apm_undo_uninstall_success">%s восстановлен</string>
+    <string name="apm_undo_uninstall_failed">Не удалось восстановить: %s</string>
     <string name="apm_version">Версия</string>
     <string name="apm_author">Автор</string>
     <string name="apm_desc">Описание</string>

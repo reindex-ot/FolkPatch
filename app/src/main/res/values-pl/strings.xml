@@ -196,10 +196,13 @@
     <string name="apm_failed_to_disable">Nie udało się wyłączyć modułu: %s</string>
     <string name="apm_empty">Brak zainstalowanych modułów</string>
     <string name="apm_remove">Usuń</string>
+    <string name="apm_undo">Cofnij</string>
     <string name="apm_install">Zainstaluj</string>
     <string name="apm_uninstall_confirm">Odinstalować moduł %s?</string>
     <string name="apm_uninstall_success">Moduł %s odinstalowany</string>
     <string name="apm_uninstall_failed">Nie udało się odinstalować: %s</string>
+    <string name="apm_undo_uninstall_success">Przywracono %s</string>
+    <string name="apm_undo_uninstall_failed">Nie udało się przywrócić: %s</string>
     <string name="apm_version">Wersja</string>
     <string name="apm_author">Autor</string>
     <string name="apm_desc">Opis</string>
