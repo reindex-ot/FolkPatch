@@ -353,6 +353,10 @@ class APApplication : Application(), Thread.UncaughtExceptionHandler, ImageLoade
         
         // Initialize Sound Effect
         me.bmax.apatch.ui.theme.SoundEffectConfig.load(this)
+
+        // Initialize Vibration
+        me.bmax.apatch.ui.theme.VibrationConfig.load(this)
+
         MusicManager.init(this)
         
         Log.d(TAG, "APApplication onCreate completed")

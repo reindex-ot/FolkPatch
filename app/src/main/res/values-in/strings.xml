@@ -772,4 +772,11 @@ Pastikan aplikasi ditutup sepenuhnya dan dimulai ulang untuk menjalankan perinta
     <string name="script_library_save_log">Simpan log</string>
     <string name="script_library_log_saved">Log disimpan ke %s</string>
     <string name="script_library_log_save_failed">Gagal menyimpan log: %s</string>
+    <string name="settings_vibration">Getaran &amp; Haptik</string>
+    <string name="settings_vibration_summary">Getar saat disentuh</string>
+    <string name="settings_vibration_enabled">Aktifkan getaran</string>
+    <string name="settings_vibration_intensity">Intensitas getaran</string>
+    <string name="settings_vibration_scope">Cakupan getaran</string>
+    <string name="settings_vibration_scope_global">Global (Di mana saja)</string>
+    <string name="settings_vibration_scope_bottom_bar">Hanya bilah bawah</string>
 </resources>

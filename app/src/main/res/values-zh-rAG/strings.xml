@@ -777,4 +777,11 @@
     <string name="script_library_save_log">保存日志喵！</string>
     <string name="script_library_log_saved">日志保存到 %s 喵！</string>
     <string name="script_library_log_save_failed">保存日志失败了喵：%s</string>
+    <string name="settings_vibration">震动触感喵</string>
+    <string name="settings_vibration_summary">在触摸事件时震动喵</string>
+    <string name="settings_vibration_enabled">启用震动喵</string>
+    <string name="settings_vibration_intensity">震动强度喵</string>
+    <string name="settings_vibration_scope">震动范围喵</string>
+    <string name="settings_vibration_scope_global">全局喵</string>
+    <string name="settings_vibration_scope_bottom_bar">仅底部栏喵</string>
 </resources>

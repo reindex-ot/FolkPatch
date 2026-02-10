@@ -789,4 +789,11 @@ Cần đảm bảo phần mềm thoát hoàn toàn vào mới sẽ thực thi l�
     <string name="script_library_save_log">Lưu nhật ký</string>
     <string name="script_library_log_saved">Nhật ký đã lưu vào %s</string>
     <string name="script_library_log_save_failed">Lưu nhật ký thất bại: %s</string>
+    <string name="settings_vibration">Rung &amp; Phản hồi xúc giác</string>
+    <string name="settings_vibration_summary">Rung khi chạm</string>
+    <string name="settings_vibration_enabled">Bật rung</string>
+    <string name="settings_vibration_intensity">Cường độ rung</string>
+    <string name="settings_vibration_scope">Phạm vi rung</string>
+    <string name="settings_vibration_scope_global">Toàn cầu (Mọi nơi)</string>
+    <string name="settings_vibration_scope_bottom_bar">Chỉ thanh dưới cùng</string>
 </resources>

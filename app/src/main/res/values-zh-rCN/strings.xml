@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name" translatable="false">FolkPatch</string>
     <string name="app_name_folksu">FolkSU</string>
@@ -729,6 +729,14 @@
     <string name="settings_clear_sound_effect">清除音效</string>
     <string name="settings_clear_sound_effect_confirm">确定要清除音效吗？</string>
     <string name="settings_sound_effect_cleared">音效已清除</string>
+
+    <string name="settings_vibration">震动触感</string>
+    <string name="settings_vibration_summary">在触摸事件时震动</string>
+    <string name="settings_vibration_enabled">启用震动</string>
+    <string name="settings_vibration_intensity">震动强度</string>
+    <string name="settings_vibration_scope">震动范围</string>
+    <string name="settings_vibration_scope_global">全局(任意位置)</string>
+    <string name="settings_vibration_scope_bottom_bar">仅底部栏</string>
 
     <!-- Backup Settings -->
     <string name="settings_category_backup">备份</string>

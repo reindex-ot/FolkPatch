@@ -779,4 +779,11 @@
     <string name="script_library_save_log">حفظ السجل</string>
     <string name="script_library_log_saved">تم حفظ السجل في %s</string>
     <string name="script_library_log_save_failed">فشل حفظ السجل: %s</string>
+    <string name="settings_vibration">الاهتزاز واللمس</string>
+    <string name="settings_vibration_summary">الاهتزاز عند اللمس</string>
+    <string name="settings_vibration_enabled">تفعيل الاهتزاز</string>
+    <string name="settings_vibration_intensity">شدة الاهتزاز</string>
+    <string name="settings_vibration_scope">نطاق الاهتزاز</string>
+    <string name="settings_vibration_scope_global">عالمي (في كل مكان)</string>
+    <string name="settings_vibration_scope_bottom_bar">الشريط السفلي فقط</string>
 </resources>

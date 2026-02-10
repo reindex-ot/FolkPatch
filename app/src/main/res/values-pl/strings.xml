@@ -794,4 +794,11 @@ Upewnij się, że aplikacja jest całkowicie zamknięta i ponownie otwarta, aby 
     <string name="script_library_save_log">Zapisz log</string>
     <string name="script_library_log_saved">Log zapisany w %s</string>
     <string name="script_library_log_save_failed">Błąd zapisu logu: %s</string>
+    <string name="settings_vibration">Wibracje i haptyka</string>
+    <string name="settings_vibration_summary">Wibracje przy dotyku</string>
+    <string name="settings_vibration_enabled">Włącz wibracje</string>
+    <string name="settings_vibration_intensity">Intensywność wibracji</string>
+    <string name="settings_vibration_scope">Zakres wibracji</string>
+    <string name="settings_vibration_scope_global">Globalny (wszędzie)</string>
+    <string name="settings_vibration_scope_bottom_bar">Tylko dolny pasek</string>
 </resources>

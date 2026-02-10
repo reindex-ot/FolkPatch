@@ -660,4 +660,11 @@
     <string name="script_library_save_log">ログを保存</string>
     <string name="script_library_log_saved">「%s」にログを保存しました</string>
     <string name="script_library_log_save_failed">ログの保存に失敗: %s</string>
+    <string name="settings_vibration">バイブレーションと触覚</string>
+    <string name="settings_vibration_summary">タッチ操作時に振動する</string>
+    <string name="settings_vibration_enabled">バイブレーションを有効化</string>
+    <string name="settings_vibration_intensity">バイブレーションの強さ</string>
+    <string name="settings_vibration_scope">バイブレーションの範囲</string>
+    <string name="settings_vibration_scope_global">グローバル（すべての場所）</string>
+    <string name="settings_vibration_scope_bottom_bar">下部バーのみ</string>
 </resources>

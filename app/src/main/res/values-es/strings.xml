@@ -794,4 +794,11 @@ Por ejemplo, los KPM que previenen la modificación de particiones solo pueden u
     <string name="script_library_save_log">Guardar registro</string>
     <string name="script_library_log_saved">Registro guardado en %s</string>
     <string name="script_library_log_save_failed">Error al guardar registro: %s</string>
+    <string name="settings_vibration">Vibración y háptica</string>
+    <string name="settings_vibration_summary">Vibrar al tocar</string>
+    <string name="settings_vibration_enabled">Activar vibración</string>
+    <string name="settings_vibration_intensity">Intensidad de vibración</string>
+    <string name="settings_vibration_scope">Alcance de vibración</string>
+    <string name="settings_vibration_scope_global">Global (En todas partes)</string>
+    <string name="settings_vibration_scope_bottom_bar">Solo barra inferior</string>
 </resources>

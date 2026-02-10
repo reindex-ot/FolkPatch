@@ -776,4 +776,11 @@
     <string name="script_library_log_saved">施展历史已记录到 %s</string>
     <string name="script_library_log_save_failed">记录施展历史失败：%s</string>
 
+    <string name="settings_vibration">Чичиргээ ба мэдрэхүй</string>
+    <string name="settings_vibration_summary">Хүрэх үед чичирхийлэх</string>
+    <string name="settings_vibration_enabled">Чичиргээ идэвхжүүлэх</string>
+    <string name="settings_vibration_intensity">Чичиргээний хүч</string>
+    <string name="settings_vibration_scope">Чичиргээний хамрах хүрээ</string>
+    <string name="settings_vibration_scope_global">Глобал (Хаа сайгүй)</string>
+    <string name="settings_vibration_scope_bottom_bar">Зөвхөн доод самбар</string>
 </resources>

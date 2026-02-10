@@ -790,4 +790,11 @@
     <string name="script_library_save_log">Сохранить лог</string>
     <string name="script_library_log_saved">Лог сохранен в %s</string>
     <string name="script_library_log_save_failed">Ошибка сохранения лога: %s</string>
+    <string name="settings_vibration">Вибрация и тактильная отдача</string>
+    <string name="settings_vibration_summary">Вибрация при касании</string>
+    <string name="settings_vibration_enabled">Включить вибрацию</string>
+    <string name="settings_vibration_intensity">Интенсивность вибрации</string>
+    <string name="settings_vibration_scope">Область вибрации</string>
+    <string name="settings_vibration_scope_global">Везде (Глобально)</string>
+    <string name="settings_vibration_scope_bottom_bar">Только нижняя панель</string>
 </resources>

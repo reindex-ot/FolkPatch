@@ -792,4 +792,11 @@ Por favor, certifique-se de fechar completamente o app e reabri-lo para que os c
     <string name="script_library_save_log">Salvar log</string>
     <string name="script_library_log_saved">Log salvo em %s</string>
     <string name="script_library_log_save_failed">Falha ao salvar log: %s</string>
+    <string name="settings_vibration">Vibração e tato</string>
+    <string name="settings_vibration_summary">Vibrar ao tocar</string>
+    <string name="settings_vibration_enabled">Ativar vibração</string>
+    <string name="settings_vibration_intensity">Intensidade da vibração</string>
+    <string name="settings_vibration_scope">Escopo da vibração</string>
+    <string name="settings_vibration_scope_global">Global (Em todo lugar)</string>
+    <string name="settings_vibration_scope_bottom_bar">Apenas barra inferior</string>
 </resources>

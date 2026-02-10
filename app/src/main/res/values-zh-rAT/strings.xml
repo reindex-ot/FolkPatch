@@ -777,4 +777,11 @@
     <string name="script_library_log_saved">咏唱记录已保存至 %s</string>
     <string name="script_library_log_save_failed">保存咏唱记录失败：%s</string>
 
+    <string name="settings_vibration">圣光之触</string>
+    <string name="settings_vibration_summary">感知神圣的震颤</string>
+    <string name="settings_vibration_enabled">开启神圣震动</string>
+    <string name="settings_vibration_intensity">神恩强度</string>
+    <string name="settings_vibration_scope">圣光范围</string>
+    <string name="settings_vibration_scope_global">普世(任意位置)</string>
+    <string name="settings_vibration_scope_bottom_bar">仅限祭坛(底部栏)</string>
 </resources>

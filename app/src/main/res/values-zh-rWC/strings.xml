@@ -774,4 +774,11 @@
     <string name="script_library_log_saved">施符录已藏至 %s</string>
     <string name="script_library_log_save_failed">藏施符录败陨：%s</string>
 
+    <string name="settings_vibration">天地律动</string>
+    <string name="settings_vibration_summary">感知天地之颤</string>
+    <string name="settings_vibration_enabled">开启律动</string>
+    <string name="settings_vibration_intensity">律动强度</string>
+    <string name="settings_vibration_scope">律动范围</string>
+    <string name="settings_vibration_scope_global">普天之下</string>
+    <string name="settings_vibration_scope_bottom_bar">仅限基台</string>
 </resources>

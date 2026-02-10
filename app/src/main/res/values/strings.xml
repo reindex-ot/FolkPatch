@@ -757,6 +757,14 @@ Please ensure the app is completely closed and reopened for the commands to exec
     <string name="settings_clear_sound_effect_confirm">Are you sure you want to clear the sound effect?</string>
     <string name="settings_sound_effect_cleared">Sound effect cleared</string>
 
+    <string name="settings_vibration">Vibration Feedback</string>
+    <string name="settings_vibration_summary">Vibrate on touch events</string>
+    <string name="settings_vibration_enabled">Enable Vibration</string>
+    <string name="settings_vibration_intensity">Vibration Intensity</string>
+    <string name="settings_vibration_scope">Vibration Scope</string>
+    <string name="settings_vibration_scope_global">Global (Anywhere)</string>
+    <string name="settings_vibration_scope_bottom_bar">Bottom Bar Only</string>
+
     <!-- Backup Settings -->
     <string name="settings_category_backup">Backup</string>
     <string name="settings_enable_cloud_backup">Enable Cloud Backup</string>
