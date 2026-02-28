@@ -96,6 +96,51 @@ class ThemeDownloader(private val context: Context) {
     }
 
     /**
+     * 获取外部存储主题目录 (/storage/emulated/0/Download/FolkPatch/Themes/)
+     */
+    private fun getExternalThemesDir(): File {
+        val externalDir = File(
+            android.os.Environment.getExternalStoragePublicDirectory(android.os.Environment.DIRECTORY_DOWNLOADS),
+            "FolkPatch/Themes"
+        )
+        if (!externalDir.exists()) {
+            externalDir.mkdirs()
+        }
+        return externalDir
+    }
+
+    /**
+     * 获取外部存储主题文件路径
+     */
+    private fun getExternalThemeFilePath(author: String, themeName: String): File {
+        val safeAuthor = sanitizeFilename(author)
+        val safeThemeName = sanitizeFilename(themeName)
+        val themeDir = File(getExternalThemesDir(), "$safeAuthor/$safeThemeName")
+        if (!themeDir.exists()) {
+            themeDir.mkdirs()
+        }
+        return File(themeDir, "${sanitizeFilename(themeName)}.fpt")
+    }
+
+    /**
+     * 备份主题 FPT 文件到外部存储
+     */
+    private fun backupThemeFileToExternal(theme: ThemeStoreViewModel.RemoteTheme) {
+        try {
+            val internalThemeFile = getThemeFilePath(theme.author, theme.name)
+            val externalThemeFile = getExternalThemeFilePath(theme.author, theme.name)
+            
+            // 复制 FPT 文件到外部存储
+            if (internalThemeFile.exists()) {
+                internalThemeFile.copyTo(externalThemeFile, overwrite = true)
+                Log.d(TAG, "Backed up theme FPT to: ${externalThemeFile.absolutePath}")
+            }
+        } catch (e: Exception) {
+            Log.e(TAG, "Failed to backup theme FPT to external storage", e)
+        }
+    }
+
+    /**
      * 开始下载主题
      */
     fun downloadTheme(theme: ThemeStoreViewModel.RemoteTheme): Flow<DownloadProgress> = flow {
@@ -190,6 +235,9 @@ class ThemeDownloader(private val context: Context) {
             
             // 4. 保存主题元数据 JSON
             saveThemeMetadata(theme)
+            
+            // 5. 备份 FPT 文件到外部存储
+            backupThemeFileToExternal(theme)
             
             // 从任务列表中移除
             downloadTasks.remove(taskId)
