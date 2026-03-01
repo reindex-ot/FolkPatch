@@ -448,6 +448,33 @@ fn _install_module(zip: &str) -> Result<()> {
     let file = fs::File::open(zip)?;
     let mut archive = zip::ZipArchive::new(file)?;
     archive.extract(&_module_update_dir)?;
+    
+    // Set SELinux context for module root directory and special files
+    // This is critical for .img files that need to be loop-mounted
+    #[cfg(unix)]
+    {
+        let module_update_path = Path::new(&_module_update_dir);
+        if module_update_path.exists() {
+            // Set adb_data_file context for the module root directory
+            restorecon::lsetfilecon(&_module_update_dir, restorecon::ADB_CON)?;
+            
+            // Process special files like .img that need proper permissions for mounting
+            if let Ok(entries) = fs::read_dir(&_module_update_dir) {
+                for entry in entries.flatten() {
+                    let path = entry.path();
+                    if let Some(extension) = path.extension() {
+                        if extension == "img" {
+                            // Set proper permissions for image files (readable by all)
+                            fs::set_permissions(&path, fs::Permissions::from_mode(0o644))?;
+                            // Set SELinux context to allow loop mounting
+                            restorecon::lsetfilecon(&path, restorecon::ADB_CON)?;
+                            info!("Set permissions and SELinux context for: {:?}", path);
+                        }
+                    }
+                }
+            }
+        }
+    }
 
     println!("- Running module installer");
     exec_install_script(zip, is_metamodule)?;
